@@ -1,0 +1,21 @@
+@mixin scrollbar($width: 8px) {
+  $light: darken($color-grey-light, 2%);
+  $dark: $color-grey;
+
+  &::-webkit-scrollbar-track {
+    border-radius: $width / 2;
+    background-color: $light;
+  }
+
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+
+    background-color: $light;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $width / 2;
+    background-color: $dark;
+  }
+}

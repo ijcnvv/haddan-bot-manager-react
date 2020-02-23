@@ -1,0 +1,39 @@
+@import "../../assets/styles/modules/variables.scss";
+
+.header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+
+  a.active {
+    background-color: darken($color-dark, 10%);
+  }
+
+  nav ul {
+    display: flex;
+    height: 100%;
+  }
+
+  nav li {
+    float: none;
+    display: flex;
+
+    &.right {
+      margin-left: auto;
+    }
+  }
+
+  nav a {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 480px) {
+      padding: 10px;
+      font-size: $size-xs - 2px;
+    }
+  }
+
+  .logout {
+    cursor: pointer;
+  }
+}

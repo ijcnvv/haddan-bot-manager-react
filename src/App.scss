@@ -1,0 +1,12 @@
+.page {
+  height: 100%;
+
+  &__container {
+    padding: 5rem 0 2rem;
+  }
+
+  &__not-found {
+    text-align: center;
+    padding-top: 10rem;
+  }
+}

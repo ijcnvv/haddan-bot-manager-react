@@ -1,8 +1,19 @@
 import React from "react";
-import "./App.css";
+import Layout from "./components/layout/layout";
+import { Route, Switch } from "react-router-dom";
+import InfoPage from "./pages/info/info";
+import UpdatesPage from "./pages/updates/updates";
+import "./App.scss";
 
 function App() {
-  return <div></div>;
+  return (
+    <Layout>
+      <Switch>
+        <Route path="/" exact component={InfoPage} />
+        <Route path="/updates" component={UpdatesPage} />
+      </Switch>
+    </Layout>
+  );
 }
 
 export default App;

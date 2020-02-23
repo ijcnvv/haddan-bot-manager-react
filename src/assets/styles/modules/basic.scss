@@ -1,0 +1,79 @@
+html,
+body,
+#app {
+  height: 100%;
+  font-size: $size-sm;
+
+  @media (max-width: 720px) {
+    font-size: $size-xs;
+  }
+}
+
+html {
+  &.out {
+    overflow: hidden;
+  }
+}
+
+body {
+  @include scrollbar(8px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  line-height: 1.4;
+  color: $color-dark;
+  font-weight: $weight-normal;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  background-color: $color-grey-light;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+strong,
+b {
+  font-weight: bold;
+}
+
+h1,
+h2 {
+  margin: 0 0 1rem;
+  font-size: $size-lg;
+}
+
+h3 {
+  margin: 0 0 0.5rem;
+  font-size: $size-md;
+}
+
+.container {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 0.8rem;
+}
+
+button + button {
+  margin-left: 10px;
+}
+
+.btn-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
