@@ -1,10 +1,19 @@
 import axios from "./axios";
 
+const axiosRequest = async fn => {
+  try {
+    const { data } = await fn();
+    return data;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+};
+
 const ajax = {
-  get: (url, params) => axios.get(url, { params }),
-  post: (url, params) => axios.post(url, params),
-  put: (url, params) => axios.put(url, params),
-  delete: (url, params) => axios.delete(url, params)
+  get: (url, params) => axiosRequest(() => axios.get(url, { params })),
+  post: (url, params) => axiosRequest(() => axios.post(url, params)),
+  put: (url, params) => axiosRequest(() => axios.put(url, params)),
+  delete: (url, params) => axiosRequest(() => axios.delete(url, params))
 };
 
 export default ajax;

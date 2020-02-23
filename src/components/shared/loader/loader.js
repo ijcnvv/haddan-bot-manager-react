@@ -1,13 +1,13 @@
 import React from "react";
 import "./loader.scss";
 
-const loader = props => {
+const Loader = ({ abs = true }) => {
   const classes = ["lds-wrapper"];
-  if (props.abs) classes.push("abs");
+  if (abs) classes.push("abs");
 
   return (
-    <div className={classes}>
-      <div loader="lds-ring">
+    <div className={classes.join(" ")}>
+      <div className="lds-ring">
         <div />
         <div />
         <div />
@@ -17,4 +17,4 @@ const loader = props => {
   );
 };
 
-export default loader;
+export default Loader;

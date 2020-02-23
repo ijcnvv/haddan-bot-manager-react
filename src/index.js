@@ -2,14 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { CommonState } from "./context/common/commonState";
+
 import * as serviceWorker from "./serviceWorker";
 import "materialize-css/sass/materialize.scss";
 import "./assets/styles/index.scss";
 
 const appElement = (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <CommonState>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </CommonState>
 );
 
 ReactDOM.render(appElement, document.getElementById("root"));

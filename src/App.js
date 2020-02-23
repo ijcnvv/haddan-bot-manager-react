@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "./components/layout/layout";
 import { Route, Switch } from "react-router-dom";
+import Layout from "./components/layout/layout";
 import InfoPage from "./pages/info/info";
 import UpdatesPage from "./pages/updates/updates";
 import "./App.scss";
