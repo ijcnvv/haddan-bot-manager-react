@@ -1,9 +1,9 @@
 import ajax from "../../modules/ajax";
 
-const getUpdates = () => {
+const ajaxGetUpdates = () => {
   const params = {
     get: "updates"
   };
   return ajax.get("/api.php", params);
 };
-export { getUpdates };
+export { ajaxGetUpdates };

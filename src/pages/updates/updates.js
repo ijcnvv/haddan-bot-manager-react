@@ -3,11 +3,11 @@ import Loader from "../../components/shared/loader/loader";
 import { CommonContext } from "../../context/common/commonContext";
 
 const UpdatesPage = () => {
-  const { fetchUpdates, loading, updates } = useContext(CommonContext);
+  const { getUpdates, loading, updates } = useContext(CommonContext);
 
   useEffect(() => {
     if (updates.length) return;
-    fetchUpdates();
+    getUpdates();
     // eslint-disable-next-line
   }, []);
 
