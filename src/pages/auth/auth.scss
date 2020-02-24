@@ -1,0 +1,11 @@
+.auth-card {
+  .card-content {
+    .card-title {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__error {
+    margin-top: 30px;
+  }
+}

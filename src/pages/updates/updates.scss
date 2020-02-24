@@ -16,12 +16,18 @@
 }
 
 @media (max-width: 480px) {
-  .card .card-content {
+  .card-update .card-content {
     padding: 15px;
 
     .card-title {
       font-size: 18px;
       line-height: 24px;
+    }
+  }
+
+  .updates {
+    & > div {
+      margin-bottom: 1rem;
     }
   }
 }

@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Layout from "./components/layout/layout";
 import InfoPage from "./pages/info/info";
 import UpdatesPage from "./pages/updates/updates";
+import AuthPage from "./pages/auth/auth";
 import { CommonContext } from "./context/common/commonContext";
 import "./App.scss";
 
@@ -21,6 +22,7 @@ const App = () => {
       <Switch>
         <Route path="/" exact component={InfoPage} />
         <Route path="/updates" component={UpdatesPage} />
+        <Route path="/auth" component={AuthPage} />
       </Switch>
     </Layout>
   );

@@ -17,6 +17,11 @@ const Navbar = props => (
               Обновления
             </NavLink>
           </li>
+          <li className="header__list-item right">
+            <NavLink to="/auth" className="header__link">
+              Вход
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
