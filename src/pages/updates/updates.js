@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import Loader from "../../components/shared/loader/loader";
-import { CommonContext } from "../../context/common/commonContext";
+import CommonContext from "../../context/common/commonContext";
 import "./updates.scss";
 
 const UpdatesPage = () => {

@@ -1,3 +1,5 @@
 import { createContext } from "react";
 
-export const CommonContext = createContext();
+const CommonContext = createContext();
+
+export default CommonContext;

@@ -5,7 +5,7 @@ const axiosRequest = async fn => {
     const { data } = await fn();
     return data;
   } catch (e) {
-    console.error(e.message);
+    throw new Error(e.message);
   }
 };
 
