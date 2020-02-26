@@ -3,8 +3,11 @@ import CommonContext from "../../context/common/commonContext";
 
 const Logout = props => {
   const { logout } = useContext(CommonContext);
-  // eslint-disable-next-line
-  useEffect(() => logout().then(() => props.history.push("/")), []);
+
+  useEffect(() => {
+    logout().then(() => props.history.push("/"));
+    // eslint-disable-next-line
+  }, []);
   return <Fragment />;
 };
 

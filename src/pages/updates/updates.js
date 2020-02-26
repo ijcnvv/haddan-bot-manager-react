@@ -14,7 +14,7 @@ const UpdatesPage = () => {
 
   return (
     <div className="updates">
-      {loading ? <Loader /> : null}
+      <Loader loading={loading} />
       {updates.map(item => (
         <div className="card card-update update" key={item.id}>
           <div className="card-content">

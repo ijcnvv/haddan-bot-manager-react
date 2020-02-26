@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import CommonContext from "./commonContext";
-import commonReducer from "./commonReducer";
+import CommonReducer from "./commonReducer";
 import {
   SET_UPDATES,
   SET_LOADING,
@@ -16,16 +16,16 @@ import {
 } from "../../api";
 import { getToken, saveToken } from "../../utils/token";
 
-export const CommonState = ({ children }) => {
+const CommonState = ({ children }) => {
   const initialState = {
     loading: false,
     updates: [],
     isAuth: false,
     token: getToken()
   };
-  const [state, dispatch] = useReducer(commonReducer, initialState);
+  const [state, dispatch] = useReducer(CommonReducer, initialState);
 
-  const getUpdates = async () => {
+  const getUpdates = () => {
     setLoading();
     return ajaxGetUpdates()
       .then(payload => dispatch({ type: SET_UPDATES, payload }))
@@ -78,3 +78,5 @@ export const CommonState = ({ children }) => {
     </CommonContext.Provider>
   );
 };
+
+export default CommonState;

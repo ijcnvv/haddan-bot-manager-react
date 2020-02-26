@@ -1,19 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./loader.scss";
 
-const Loader = ({ abs = true }) => {
+const Loader = ({ abs = true, loading = true }) => {
   const classes = ["lds-wrapper"];
   if (abs) classes.push("abs");
 
   return (
-    <div className={classes.join(" ")}>
-      <div className="lds-ring">
-        <div />
-        <div />
-        <div />
-        <div />
-      </div>
-    </div>
+    <Fragment>
+      {loading ? (
+        <div className={classes.join(" ")}>
+          <div className="lds-ring">
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        </div>
+      ) : null}
+    </Fragment>
   );
 };
 

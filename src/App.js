@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Layout from "./components/layout/layout";
+import Layout from "./hoc/layout/layout";
 
 import InfoPage from "./pages/info/info";
 import UpdatesPage from "./pages/updates/updates";
