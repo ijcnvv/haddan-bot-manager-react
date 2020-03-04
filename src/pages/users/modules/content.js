@@ -1,27 +1,30 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import UsersContext from "../../../context/users/usersContext";
 import Loader from "../../../components/shared/loader/loader";
+import Select from "../../../components/shared/select/select";
 import Profit from "./profit";
 
 const UsersPage = () => {
   const { getUsers, loading, users, profit } = useContext(UsersContext);
+  const [sortBy, setSortBy] = useState("name");
 
-  // eslint-disable-next-line
+  const sortList = { cash: "Баланс", name: "Имя" };
+
   useEffect(() => {
     getUsers();
+    // eslint-disable-next-line
   }, []);
-
-  const isProfit = !!Object.keys(profit).length;
-
-  const profitTitle = isProfit
-    ? `Активных пользователей ${profit.count}, 
-    доход ${parseInt(profit.profit, 10)} руб/день`
-    : "";
 
   return (
     <div className="users">
       <Loader loading={loading} />
       <Profit data={profit} />
+      <Select
+        value={sortBy}
+        onChange={setSortBy}
+        list={sortList}
+        label="Сортировка"
+      />
     </div>
   );
 };

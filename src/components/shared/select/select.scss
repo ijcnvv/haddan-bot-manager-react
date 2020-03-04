@@ -1,0 +1,14 @@
+.select-wrapper {
+  .caret {
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-content {
+    &.active {
+      display: block;
+      opacity: 1;
+      width: 100%;
+    }
+  }
+}
