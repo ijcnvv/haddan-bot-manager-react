@@ -1,0 +1,40 @@
+.popup {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(51, 51, 51, 0.4);
+
+  &.visible &__container {
+    overflow: visible;
+  }
+
+  &__container {
+    position: relative;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 98vw;
+    max-height: 95vh;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 5px rgba(51, 51, 51, 0.2);
+  }
+
+  &__close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+  }
+}
