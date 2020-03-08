@@ -1,11 +1,18 @@
 import React from "react";
 
-const Input = props => {
-  const { type = "text", label, value, onChange, placeholder = "" } = props;
+const Input = ({
+  type = "text",
+  label,
+  value,
+  onChange,
+  placeholder = "",
+  classes = ""
+}) => {
   const id = `${type}-${(Math.random() * 100000) ^ 1}`;
+  const cls = `input-field ${classes}`;
 
   return (
-    <div className="input-field">
+    <div className={cls}>
       <input
         value={value}
         placeholder={placeholder}

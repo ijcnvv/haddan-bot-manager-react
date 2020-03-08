@@ -3,11 +3,14 @@ import UsersContext from "../../../context/users/usersContext";
 import Loader from "../../../components/shared/loader/loader";
 import Select from "../../../components/shared/select/select";
 import Profit from "./profit";
+import UsersList from "./usersList";
+import Input from "../../../components/shared/input/input";
+import "../users.scss";
 
 const UsersPage = () => {
   const { getUsers, loading, users, profit } = useContext(UsersContext);
   const [sortBy, setSortBy] = useState("name");
-
+  const [filter, setFilter] = useState("");
   const sortList = { cash: "Баланс", name: "Имя" };
 
   useEffect(() => {
@@ -19,12 +22,22 @@ const UsersPage = () => {
     <div className="users">
       <Loader loading={loading} />
       <Profit data={profit} />
-      <Select
-        value={sortBy}
-        onChange={setSortBy}
-        list={sortList}
-        label="Сортировка"
-      />
+      <div className="users__filters">
+        <Input
+          value={filter}
+          onChange={e => setFilter(e.target.value)}
+          classes="users__filter"
+          label="Фильтр по имени/email"
+          placeholder="Введите имя"
+        />
+        <Select
+          value={sortBy}
+          onChange={setSortBy}
+          list={sortList}
+          label="Сортировка"
+        />
+      </div>
+      <UsersList users={users} sortBy={sortBy} filter={filter} />
     </div>
   );
 };

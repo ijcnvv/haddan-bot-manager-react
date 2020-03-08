@@ -1,0 +1,15 @@
+.users {
+  display: flex;
+  flex-direction: column;
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__filter {
+    width: 100%;
+    margin-right: 20px;
+  }
+}

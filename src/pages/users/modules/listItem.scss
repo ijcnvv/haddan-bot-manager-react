@@ -1,0 +1,29 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0.6rem;
+
+  &__name {
+    font-weight: bold;
+    font-size: 16px;
+    word-wrap: none;
+    overflow: hidden;
+  }
+
+  &__cash,
+  &__email {
+    font-size: 12px;
+    color: #777;
+  }
+
+  &__cash {
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  &__icon {
+    width: 30px;
+    margin-right: 10px;
+  }
+}
