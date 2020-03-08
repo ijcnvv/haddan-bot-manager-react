@@ -33,6 +33,7 @@ const CommonState = ({ children }) => {
   };
 
   const getAuthByToken = () => {
+    setLoading();
     return ajaxAuthByToken()
       .then(() => dispatch({ type: SET_AUTH }))
       .catch(showErrorMessage);
