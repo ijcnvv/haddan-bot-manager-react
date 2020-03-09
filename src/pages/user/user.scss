@@ -1,0 +1,46 @@
+.user {
+  .material-icons {
+    margin-right: 10px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+
+    &.space {
+      margin-bottom: 2.5em;
+    }
+  }
+
+  &__edit {
+    cursor: pointer;
+    font-size: 22px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+  }
+
+  &__icon {
+    width: 25px;
+    margin-right: 10px;
+  }
+
+  &__logs {
+    margin-top: 2em;
+  }
+
+  &__logs-title {
+    font-size: 20px;
+    margin-bottom: 0.5em;
+  }
+}

@@ -6,6 +6,7 @@ import InfoPage from "./pages/info/info";
 import UpdatesPage from "./pages/updates/updates";
 import AuthPage from "./pages/auth/auth";
 import UsersPage from "./pages/users/users";
+import UserPage from "./pages/user/user";
 import Logout from "./components/logout/logout";
 import CommonContext from "./context/common/commonContext";
 import "./App.scss";
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <Layout>
       <Switch>
+        <PrivateRoute path="/users/:id" component={UserPage} />
         <PrivateRoute path="/users" component={UsersPage} />
         <Route path="/updates" component={UpdatesPage} />
         <Route path="/logout" component={Logout} />

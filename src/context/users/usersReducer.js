@@ -1,10 +1,15 @@
-import { SET_USERS_DATA, SET_LOADING } from "../../constants";
+import { SET_USERS_DATA, SET_USER_DATA, SET_LOADING } from "../../constants";
 
 const handlers = {
   [SET_USERS_DATA]: (state, { payload }) => ({
     ...state,
     users: payload.users,
     profit: payload.profit,
+    loading: false
+  }),
+  [SET_USER_DATA]: (state, { payload }) => ({
+    ...state,
+    user: payload.user,
     loading: false
   }),
   [SET_LOADING]: (state, { payload = true }) => ({
