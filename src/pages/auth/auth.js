@@ -5,7 +5,7 @@ import Loader from "../../components/shared/loader/loader";
 import CommonContext from "../../context/common/commonContext";
 import "./auth.scss";
 
-const AuthPage = props => {
+const AuthPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { getAuthByEmailAndPassword, isAuth, loading } = useContext(

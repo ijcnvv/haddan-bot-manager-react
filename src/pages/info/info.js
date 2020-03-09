@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "./info.scss";
 
 const list = [
@@ -38,7 +38,7 @@ const listItem = (text, index) => (
 );
 
 const InfoPage = () => (
-  <React.Fragment>
+  <Fragment>
     <h1>Функционал бота</h1>
     <ul>{list.map(listItem)}</ul>
     <div className="info-footer">
@@ -59,7 +59,7 @@ const InfoPage = () => (
         <strong>300р за 1000 запросов</strong>
       </p>
     </div>
-  </React.Fragment>
+  </Fragment>
 );
 
 export default InfoPage;

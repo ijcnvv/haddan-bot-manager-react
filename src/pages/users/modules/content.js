@@ -5,17 +5,17 @@ import Select from "../../../components/shared/select/select";
 import Profit from "./profit";
 import UsersList from "./usersList";
 import Input from "../../../components/shared/input/input";
+import { getStorageSortBy, setStorageSortBy } from "../../../utils/sort";
 import "../users.scss";
 
 const UsersContent = () => {
-  const defaultSortBy = window.localStorage.getItem("sortBy") || "name";
   const { getUsers, loading, users, profit } = useContext(UsersContext);
-  const [sortBy, setSortBy] = useState(defaultSortBy);
+  const [sortBy, setSortBy] = useState(getStorageSortBy());
   const [filter, setFilter] = useState("");
   const sortList = { cash: "Баланс", name: "Имя" };
 
   const sortHandler = value => {
-    window.localStorage.setItem("sortBy", value);
+    setStorageSortBy(value);
     setSortBy(value);
   };
 
