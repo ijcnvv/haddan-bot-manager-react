@@ -9,7 +9,7 @@ const handlers = {
   }),
   [SET_USER_DATA]: (state, { payload }) => ({
     ...state,
-    user: payload.user,
+    user: payload,
     loading: false
   }),
   [SET_LOADING]: (state, { payload = true }) => ({

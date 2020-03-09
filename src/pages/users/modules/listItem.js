@@ -1,9 +1,16 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./listItem.scss";
 
 const User = ({ user }) => {
+  const history = useHistory();
+
+  const clickHandler = () => {
+    history.push(`/users/${user.id}`);
+  };
+
   return (
-    <div className="list-item">
+    <div className="list-item" onClick={clickHandler}>
       <img
         className="list-item__icon"
         src={`/images/${user.network}.png`}

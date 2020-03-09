@@ -1,15 +1,14 @@
-import React, { useEffect, useContext } from "react";
-import UsersContext from "../../context/users/usersContext";
-// import Loader from '../../components/shared/loader/loader'
+import React from "react";
+import UsersState from "../../context/users/usersState";
+import UsersContent from "./modules/content";
+import "./user.scss";
 
-const User = () => {
-  // const { getUserById } = useContext(UsersContext);
-
-  // useEffect(() => {
-  //   getUserById(1);
-  // }, []);
-
-  return <></>;
+const UsersPage = () => {
+  return (
+    <UsersState>
+      <UsersContent />
+    </UsersState>
+  );
 };
 
-export default User;
+export default UsersPage;

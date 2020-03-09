@@ -7,11 +7,17 @@ import UsersList from "./usersList";
 import Input from "../../../components/shared/input/input";
 import "../users.scss";
 
-const UsersPage = () => {
+const UsersContent = () => {
+  const defaultSortBy = window.localStorage.getItem("sortBy") || "name";
   const { getUsers, loading, users, profit } = useContext(UsersContext);
-  const [sortBy, setSortBy] = useState("name");
+  const [sortBy, setSortBy] = useState(defaultSortBy);
   const [filter, setFilter] = useState("");
   const sortList = { cash: "Баланс", name: "Имя" };
+
+  const sortHandler = value => {
+    window.localStorage.setItem("sortBy", value);
+    setSortBy(value);
+  };
 
   useEffect(() => {
     getUsers();
@@ -32,7 +38,7 @@ const UsersPage = () => {
         />
         <Select
           value={sortBy}
-          onChange={setSortBy}
+          onChange={sortHandler}
           list={sortList}
           label="Сортировка"
         />
@@ -42,4 +48,4 @@ const UsersPage = () => {
   );
 };
 
-export default UsersPage;
+export default UsersContent;

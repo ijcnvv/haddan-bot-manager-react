@@ -1,0 +1,16 @@
+.log {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1em;
+
+  &__time {
+    margin-right: 10px;
+    flex-shrink: 0;
+    color: #777;
+    font-size: 11px;
+  }
+
+  &__text {
+    font-size: 16px;
+  }
+}
