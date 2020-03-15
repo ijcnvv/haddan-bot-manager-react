@@ -3,14 +3,31 @@ import { useParams } from "react-router-dom";
 import UsersContext from "../../../context/users/usersContext";
 import Logs from "./logs";
 import Loader from "../../../components/shared/loader/loader";
+import Popup from "../popups";
 
 const UserContent = () => {
   const [loaded, setLoaded] = useState(false);
+  const [isPopupShowed, setPopupShowing] = useState(false);
+  const [popupType, setPopupType] = useState(null);
+  const [editType, setEditType] = useState(null);
+
   const { user, getUserById, loading } = useContext(UsersContext);
   const { id } = useParams();
 
   const isEmpty = !Object.keys(user).length;
   const noData = loaded && isEmpty;
+
+  const showPopup = (type, editType = null) => {
+    setPopupType(type);
+    setEditType(editType);
+    setPopupShowing(true);
+  };
+
+  const closePopup = () => {
+    setPopupShowing(false);
+    setPopupType(null);
+    setEditType(null);
+  };
 
   useEffect(() => {
     getUserById(id).then(() => setLoaded(true));
@@ -22,6 +39,7 @@ const UserContent = () => {
   return (
     <div className="user">
       <Loader loading={loading} />
+
       {isEmpty ? null : (
         <div className="user__wrapper">
           <h2 className="user__title">
@@ -32,7 +50,10 @@ const UserContent = () => {
             />
             <span>{user.name}</span>
           </h2>
-          <div className="user__row">
+          <div
+            className="user__row editable"
+            onClick={() => showPopup("editUser", "cash")}
+          >
             <i className="material-icons user__edit">edit</i>
             <span>Баланс {user.cash} руб.</span>
           </div>
@@ -58,7 +79,12 @@ const UserContent = () => {
           </div>
         </div>
       )}
+
       <Logs data={user.logs} />
+
+      {isPopupShowed ? (
+        <Popup type={popupType} editType={editType} closePopup={closePopup} />
+      ) : null}
     </div>
   );
 };

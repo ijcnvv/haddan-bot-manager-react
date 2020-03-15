@@ -17,6 +17,10 @@
     &.space {
       margin-bottom: 2.5em;
     }
+
+    &.editable {
+      cursor: pointer;
+    }
   }
 
   &__edit {
