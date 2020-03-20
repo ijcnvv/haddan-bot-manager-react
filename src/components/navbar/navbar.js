@@ -1,10 +1,10 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import CommonContext from "../../context/common/commonContext";
+import { useSelector } from "react-redux";
 import "./navbar.scss";
 
 const Navbar = () => {
-  const { isAuth } = useContext(CommonContext);
+  const { isAuth } = useSelector(({ common }) => common);
   const commonLinks = [
     { to: "/", label: "Главная", exact: true },
     { to: "/updates", label: "Обновления", exact: false }

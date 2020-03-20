@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Layout from "./hoc/layout";
 import PrivateRoute from "./hoc/privateRoute";
 import InfoPage from "./pages/info/info";
@@ -12,14 +13,14 @@ import CommonContext from "./context/common/commonContext";
 import "./App.scss";
 
 const App = () => {
-  const { isAuth, token, getAuthByToken } = useContext(CommonContext);
+  // const { isAuth, token, getAuthByToken } = useContext(CommonContext);
 
-  useEffect(() => {
-    if (!isAuth && token) {
-      getAuthByToken();
-    }
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   if (!isAuth && token) {
+  //     getAuthByToken();
+  //   }
+  //   // eslint-disable-next-line
+  // }, []);
 
   return (
     <Layout>

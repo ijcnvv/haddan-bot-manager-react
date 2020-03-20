@@ -1,23 +1,23 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import Input from "../../components/shared/input/input";
 import Loader from "../../components/shared/loader/loader";
-import CommonContext from "../../context/common/commonContext";
+import { fetchAuthByEmailAndPassword } from "../../actions";
 import "./auth.scss";
 
 const AuthPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { getAuthByEmailAndPassword, isAuth, loading } = useContext(
-    CommonContext
-  );
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { loading, isAuth } = useSelector(({ common }) => common);
   const from = location.state && location.state.from.pathname;
 
   const onFormSubmit = e => {
     e.preventDefault();
-    getAuthByEmailAndPassword({ email, password });
+    dispatch(fetchAuthByEmailAndPassword({ email, password }));
   };
 
   useEffect(() => {

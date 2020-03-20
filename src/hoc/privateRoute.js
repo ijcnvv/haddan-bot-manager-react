@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
-import CommonContext from "../context/common/commonContext";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { isAuth } = useContext(CommonContext);
+  const { isAuth } = useSelector(({ common }) => common);
 
   return (
     <Route
