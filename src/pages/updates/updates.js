@@ -1,14 +1,16 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUpdates } from "../../actions";
 import Loader from "../../components/shared/loader/loader";
-import CommonContext from "../../context/common/commonContext";
 import "./updates.scss";
 
 const UpdatesPage = () => {
-  const { getUpdates, loading, updates } = useContext(CommonContext);
+  const dispatch = useDispatch();
+  const { data: updates, loading } = useSelector(({ updates }) => updates);
 
   useEffect(() => {
     if (updates.length) return;
-    getUpdates();
+    dispatch(fetchUpdates());
     // eslint-disable-next-line
   }, []);
 

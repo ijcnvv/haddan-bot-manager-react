@@ -36,7 +36,8 @@ const CommonState = ({ children }) => {
     setLoading();
     return ajaxAuthByToken()
       .then(() => dispatch({ type: SET_AUTH }))
-      .catch(showErrorMessage);
+      .catch(showErrorMessage)
+      .finally(() => setLoading(false));
   };
 
   const getAuthByEmailAndPassword = ({ email, password }) => {
@@ -46,7 +47,8 @@ const CommonState = ({ children }) => {
         saveToken(token);
         dispatch({ type: SET_TOKEN, payload: token });
       })
-      .catch(showErrorMessage);
+      .catch(showErrorMessage)
+      .finally(() => setLoading(false));
   };
 
   const logout = () => {
@@ -58,7 +60,8 @@ const CommonState = ({ children }) => {
 
   const showErrorMessage = msg => console.error(msg);
 
-  const setLoading = () => dispatch({ type: SET_LOADING });
+  const setLoading = (payload = true) =>
+    dispatch({ type: SET_LOADING, payload });
 
   const { updates, loading, token, isAuth } = state;
 
