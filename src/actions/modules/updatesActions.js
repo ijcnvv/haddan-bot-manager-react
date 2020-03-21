@@ -8,7 +8,7 @@ import {
 export const fetchUpdates = () => ({ type: UPDATES_FETCH_DATA });
 export const fetchUpdatesPending = () => ({ type: UPDATES_FETCH_PENDING });
 export const fetchUpdatesFailed = () => ({ type: UPDATES_FETCH_FAILED });
-export const fetchUpdatesSucceeded = payload => ({
+export const fetchUpdatesSucceeded = (updates = []) => ({
   type: UPDATES_FETCH_SUCCEEDED,
-  payload
+  payload: updates
 });

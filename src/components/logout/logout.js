@@ -14,7 +14,7 @@ const Logout = () => {
   }, []);
 
   useEffect(() => {
-    if (!isAuth) return history.push("/");
+    if (!isAuth) history.push("/");
   }, [isAuth, history]);
   return <Fragment />;
 };

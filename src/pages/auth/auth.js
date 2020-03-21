@@ -22,7 +22,7 @@ const AuthPage = () => {
   };
 
   useEffect(() => {
-    if (isAuth) return history.push(from ? from : "/users");
+    if (isAuth) history.push(from ? from : "/users");
   }, [isAuth, from, history]);
 
   return (
