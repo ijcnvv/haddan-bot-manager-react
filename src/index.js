@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import App from "./App";
-import CommonState from "./context/common/commonState";
 import store from "./store";
 
 import * as serviceWorker from "./serviceWorker";
@@ -13,11 +12,9 @@ import "./assets/styles/index.scss";
 
 const appElement = (
   <Provider store={store}>
-    <CommonState>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </CommonState>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 );
 
