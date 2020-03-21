@@ -1,6 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAuthByToken } from "./actions";
 import Layout from "./hoc/layout";
 import PrivateRoute from "./hoc/privateRoute";
 import InfoPage from "./pages/info/info";
@@ -9,18 +10,18 @@ import AuthPage from "./pages/auth/auth";
 import UsersPage from "./pages/users/users";
 import UserPage from "./pages/user/user";
 import Logout from "./components/logout/logout";
-import CommonContext from "./context/common/commonContext";
 import "./App.scss";
 
 const App = () => {
-  // const { isAuth, token, getAuthByToken } = useContext(CommonContext);
+  const { isAuth, token } = useSelector(({ common }) => common);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (!isAuth && token) {
-  //     getAuthByToken();
-  //   }
-  //   // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    if (!isAuth && token) {
+      dispatch(fetchAuthByToken(token));
+    }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Layout>

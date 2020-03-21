@@ -14,6 +14,7 @@ const AuthPage = () => {
   const dispatch = useDispatch();
   const { loading, isAuth } = useSelector(({ common }) => common);
   const from = location.state && location.state.from.pathname;
+  const isFormHidden = isAuth || (from && loading);
 
   const onFormSubmit = e => {
     e.preventDefault();
@@ -21,15 +22,13 @@ const AuthPage = () => {
   };
 
   useEffect(() => {
-    if (isAuth) {
-      history.push(from ? from : "/users");
-    }
+    if (isAuth) return history.push(from ? from : "/users");
   }, [isAuth, from, history]);
 
   return (
     <div className="card auth-card">
       <Loader loading={loading} />
-      {from && loading ? null : (
+      {isFormHidden ? null : (
         <div className="card-content">
           <div className="card-title">Авторизация</div>
           <form className="auth__form">

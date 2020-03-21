@@ -1,10 +1,11 @@
 import {
   COMMON_FETCH_AUTH_BY_PASSWORD,
   COMMON_FETCH_PENDING,
-  COMMON_FETCH_SUCCEEDED,
+  COMMON_FETCH_AUTH_SUCCEEDED,
   COMMON_FETCH_FAILED,
   COMMON_FETCH_AUTH_BY_TOKEN,
-  COMMON_FETCH_LOGOUT
+  COMMON_FETCH_LOGOUT,
+  COMMON_FETCH_LOGOUT_SUCCEEDED
 } from "../../constants";
 
 export const fetchAuthByEmailAndPassword = ({ email, password }) => ({
@@ -19,10 +20,14 @@ export const fetchAuthByToken = token => ({
 
 export const fetchLogout = () => ({ type: COMMON_FETCH_LOGOUT });
 
+export const fetchLogoutSucceeded = () => ({
+  type: COMMON_FETCH_LOGOUT_SUCCEEDED
+});
+
 export const commonFetchPending = () => ({ type: COMMON_FETCH_PENDING });
 
-export const commonFetchSucceeded = token => ({
-  type: COMMON_FETCH_SUCCEEDED,
+export const fetchAuthSucceeded = token => ({
+  type: COMMON_FETCH_AUTH_SUCCEEDED,
   payload: token
 });
 

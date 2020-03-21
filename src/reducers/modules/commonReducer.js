@@ -2,11 +2,8 @@ import { getToken } from "../../utils/token";
 import {
   COMMON_FETCH_PENDING,
   COMMON_FETCH_FAILED,
-  COMMON_FETCH_SUCCEEDED,
-  SET_LOADING,
-  SET_TOKEN,
-  SET_AUTH,
-  LOGOUT
+  COMMON_FETCH_AUTH_SUCCEEDED,
+  COMMON_FETCH_LOGOUT_SUCCEEDED
 } from "../../constants";
 
 const initialState = {
@@ -24,25 +21,20 @@ const handlers = {
     error: true,
     loading: false
   }),
-  [COMMON_FETCH_SUCCEEDED]: (state, { payload }) => ({
+  [COMMON_FETCH_AUTH_SUCCEEDED]: (state, { payload }) => ({
     ...state,
     isAuth: true,
     error: false,
     loading: false,
     token: payload
   }),
-  // [SET_LOADING]: (state, { payload = true }) => ({
-  //   ...state,
-  //   loading: payload
-  // }),
-  // [SET_TOKEN]: (state, { payload }) => ({
-  //   ...state,
-  //   token: payload,
-  //   isAuth: true,
-  //   loading: false
-  // }),
-  // [SET_AUTH]: state => ({ ...state, isAuth: true }),
-  // [LOGOUT]: state => ({ ...state, isAuth: false, token: null, loading: false }),
+  [COMMON_FETCH_LOGOUT_SUCCEEDED]: state => ({
+    ...state,
+    isAuth: false,
+    error: false,
+    loading: false,
+    token: null
+  }),
   DEFAULT: state => state
 };
 
