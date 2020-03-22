@@ -5,11 +5,13 @@ import rootSaga from "sagas";
 
 const sagaMiddlware = createSagaMiddleware();
 const reduxDevTools =
-  process.env.NODE_ENV === "development" &&
-  window.__REDUX_DEVTOOLS_EXTENSION__ &&
-  window.__REDUX_DEVTOOLS_EXTENSION__();
+  (process.env.NODE_ENV === "development" &&
+    window.__REDUX_DEVTOOLS_EXTENSION__ && [
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+    ]) ||
+  [];
 
-const middlewares = compose(applyMiddleware(sagaMiddlware), reduxDevTools);
+const middlewares = compose(applyMiddleware(sagaMiddlware), ...reduxDevTools);
 const store = createStore(rootReducer, middlewares);
 
 sagaMiddlware.run(rootSaga);
