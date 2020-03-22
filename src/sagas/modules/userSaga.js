@@ -1,5 +1,9 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
-import { USER_FETCH_DATA, USER_EDIT_PROPS } from "constants/index";
+import {
+  USER_FETCH_DATA,
+  USER_EDIT_PROPS,
+  USER_ADD_PLAYER
+} from "constants/index";
 import {
   fetchUserPending,
   fetchUserFailed,
@@ -10,7 +14,6 @@ import {
   ajaxEditUserProperty,
   ajaxAddPlayer
 } from "api/index";
-import { USER_ADD_PLAYER } from "../../constants";
 
 function* fetchUser({ payload }) {
   try {
@@ -48,14 +51,18 @@ function* watchFetchingUserById() {
   yield takeLatest(USER_FETCH_DATA, fetchUser);
 }
 
-function* watchEditUserProps() {
+function* watchEditingUserProps() {
   yield takeLatest(USER_EDIT_PROPS, editUserProps);
 }
 
-function* watchAddPlayer() {
+function* watchAddingPlayer() {
   yield takeLatest(USER_ADD_PLAYER, addPlayer);
 }
 
 export default function* userSagas() {
-  yield all([watchFetchingUserById(), watchEditUserProps(), watchAddPlayer()]);
+  yield all([
+    watchFetchingUserById(),
+    watchEditingUserProps(),
+    watchAddingPlayer()
+  ]);
 }
