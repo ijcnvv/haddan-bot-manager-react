@@ -1,7 +1,8 @@
 import {
   USERS_FETCH_DATA_PENDING,
   USERS_FETCH_DATA_FAILED,
-  USERS_FETCH_DATA_SUCCSEEDED
+  USERS_FETCH_DATA_SUCCSEEDED,
+  USERS_ADD_USER_SUCCEEDED
 } from "../../constants";
 
 const initialState = {
@@ -17,16 +18,20 @@ const handlers = {
     loading: true,
     error: false
   }),
-  [USERS_FETCH_DATA_FAILED]: state => ({
+  [USERS_FETCH_DATA_FAILED]: (state, { payload }) => ({
     ...state,
     loading: false,
-    error: true
+    error: payload
   }),
   [USERS_FETCH_DATA_SUCCSEEDED]: (state, { payload }) => ({
     ...state,
     loading: false,
     users: payload.users,
     profit: payload.profit
+  }),
+  [USERS_ADD_USER_SUCCEEDED]: state => ({
+    ...state,
+    loading: false
   }),
   DEFAULT: state => state
 };
