@@ -1,29 +1,14 @@
 import React from "react";
 
-const Input = ({
-  type = "text",
-  label,
-  value,
-  onChange,
-  placeholder = "",
-  classes = ""
-}) => {
-  const id = `${type}-${(Math.random() * 100000) ^ 1}`;
-  const cls = `input-field ${classes}`;
+const Input = ({ label, className, type = "text", ...rest }) => {
+  const id = `${type}-${(Math.random() * 1000000) ^ 1}`;
+  const cls = `input-field ${className}`;
 
   return (
     <div className={cls}>
-      <input
-        value={value}
-        placeholder={placeholder}
-        id={id}
-        type={type}
-        className="validate"
-        required
-        onChange={onChange}
-      />
+      <input id={id} type={type} className="validate" {...rest} />
       <label htmlFor={id} className="active">
-        {label}
+        {label || rest.placeholder}
       </label>
     </div>
   );

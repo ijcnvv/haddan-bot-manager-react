@@ -10,3 +10,8 @@
     padding-top: 10rem;
   }
 }
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchUserById, onPathLeave } from "../../actions";
+import { fetchUserById, onPathLeave } from "../../actions/userActions";
 import Loader from "../../components/shared/loader/loader";
 import Logs from "./modules/logs";
 import Popup from "./popups";

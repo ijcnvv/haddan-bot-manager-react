@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { fetchLogout } from "../../actions";
+import { fetchLogout } from "../../actions/commonActions";
 
 const Logout = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUpdates } from "../../actions";
+import { fetchUpdates } from "../../actions/updatesActions";
 import Loader from "../../components/shared/loader/loader";
 import "./updates.scss";
 

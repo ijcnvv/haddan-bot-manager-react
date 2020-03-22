@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAuthByToken } from "./actions";
+import { fetchAuthByToken } from "./actions/commonActions";
 import Layout from "./hoc/layout";
 import PrivateRoute from "./hoc/privateRoute";
 import InfoPage from "./pages/info/info";

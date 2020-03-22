@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import Input from "../../components/shared/input/input";
+import Button from "../../components/shared/button/button";
 import Loader from "../../components/shared/loader/loader";
-import { fetchAuthByEmailAndPassword } from "../../actions";
+import { fetchAuthByEmailAndPassword } from "../../actions/commonActions";
 import "./auth.scss";
 
 const AuthPage = () => {
@@ -38,6 +39,7 @@ const AuthPage = () => {
               placeholder="Введите email"
               value={email}
               onChange={e => setEmail(e.target.value)}
+              required
             />
             <Input
               type="password"
@@ -45,15 +47,16 @@ const AuthPage = () => {
               placeholder="Введите пароль"
               value={password}
               onChange={e => setPassword(e.target.value)}
+              required
             />
-            <button
+            <Button
               type="submit"
               className="waves-effect waves-light btn grey darken-4"
               onClick={onFormSubmit}
             >
               <i className="material-icons left">lock</i>
               Вход
-            </button>
+            </Button>
           </form>
           <div className="red-text text-lighten-2 card__error"></div>
         </div>

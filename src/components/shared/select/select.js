@@ -6,15 +6,22 @@ import "./select.scss";
  * @param {String} value
  * @param {Function} onChange
  * @param {Object, Array} list
- * @param {String} classes
+ * @param {String} className
  * @return {JSX}
  */
 
-const Select = ({ label = "", value = "", onChange, list, classes = "" }) => {
+const Select = ({
+  label = "",
+  value = "",
+  onChange,
+  list,
+  className = "",
+  ...rest
+}) => {
   const [active, setActive] = useState(false);
   const node = useRef();
 
-  const wrapperClasses = `input-field ${classes}`;
+  const wrapperClasses = `input-field ${className}`;
   const listClasses = `dropdown-content select-dropdown ${
     active ? "active" : ""
   }`;
@@ -72,6 +79,7 @@ const Select = ({ label = "", value = "", onChange, list, classes = "" }) => {
           value={textOfValue}
           onClick={() => setActive(true)}
           onChange={() => null}
+          {...rest}
         />
         <ul className={listClasses}>{listRendered}</ul>
         <span className="material-icons caret">keyboard_arrow_down</span>

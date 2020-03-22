@@ -5,15 +5,15 @@ import {
   fetchUpdatesPending,
   fetchUpdatesFailed,
   fetchUpdatesSucceeded
-} from "../../actions";
+} from "../../actions/updatesActions";
 
 function* getUpdates() {
   try {
     yield put(fetchUpdatesPending());
     const data = yield call(ajaxGetUpdates);
     yield put(fetchUpdatesSucceeded(data));
-  } catch (error) {
-    yield put(fetchUpdatesFailed());
+  } catch ({ message }) {
+    yield put(fetchUpdatesFailed(message));
   }
 }
 

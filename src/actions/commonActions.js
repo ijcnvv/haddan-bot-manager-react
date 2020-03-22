@@ -6,7 +6,7 @@ import {
   COMMON_FETCH_AUTH_BY_TOKEN,
   COMMON_FETCH_LOGOUT,
   COMMON_FETCH_LOGOUT_SUCCEEDED
-} from "../../constants";
+} from "../constants";
 
 export const fetchAuthByEmailAndPassword = ({ email, password }) => ({
   type: COMMON_FETCH_AUTH_BY_PASSWORD,
@@ -31,4 +31,7 @@ export const fetchAuthSucceeded = token => ({
   payload: token
 });
 
-export const commonFetchFailed = () => ({ type: COMMON_FETCH_FAILED });
+export const commonFetchFailed = payload => ({
+  type: COMMON_FETCH_FAILED,
+  payload
+});

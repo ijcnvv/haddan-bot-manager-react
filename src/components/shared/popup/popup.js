@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import "./popup.scss";
 
-const Popup = ({ children, classes = "", closePopup }) => {
-  const cls = `popup ${classes}`;
+const Popup = ({ children, className = "", closePopup }) => {
+  const cls = `popup ${className}`;
 
   const clickHandler = event => {
     const { target, currentTarget } = event;

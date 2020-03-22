@@ -9,7 +9,7 @@ import {
   commonFetchPending,
   fetchAuthSucceeded,
   fetchLogoutSucceeded
-} from "../../actions";
+} from "../../actions/commonActions";
 import {
   ajaxAuthByEmailAndPassword,
   ajaxAuthByToken,
@@ -23,8 +23,8 @@ function* authByEP({ payload }) {
     const { token } = yield call(ajaxAuthByEmailAndPassword, payload);
     yield call(saveToken, token);
     yield put(fetchAuthSucceeded(token));
-  } catch (error) {
-    yield put(commonFetchFailed());
+  } catch ({ message }) {
+    yield put(commonFetchFailed(message));
   }
 }
 
@@ -33,8 +33,8 @@ function* authByToken({ payload }) {
     yield put(commonFetchPending());
     yield call(ajaxAuthByToken, payload);
     yield put(fetchAuthSucceeded(payload));
-  } catch (error) {
-    yield put(commonFetchFailed());
+  } catch ({ message }) {
+    yield put(commonFetchFailed(message));
   }
 }
 
@@ -44,8 +44,8 @@ function* logout() {
     yield call(ajaxLogout);
     yield call(clearToken);
     yield put(fetchLogoutSucceeded());
-  } catch (error) {
-    yield put(commonFetchFailed());
+  } catch ({ message }) {
+    yield put(commonFetchFailed(message));
   }
 }
 

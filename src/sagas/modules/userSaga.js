@@ -4,7 +4,7 @@ import {
   fetchUserPending,
   fetchUserFailed,
   fetchUserSucceeded
-} from "../../actions";
+} from "../../actions/userActions";
 import { ajaxGetUserById } from "../../api";
 
 function* fetchUser({ payload }) {
@@ -12,8 +12,8 @@ function* fetchUser({ payload }) {
     yield put(fetchUserPending());
     const user = yield call(ajaxGetUserById, payload);
     yield put(fetchUserSucceeded(user));
-  } catch (error) {
-    yield put(fetchUserFailed());
+  } catch ({ message }) {
+    yield put(fetchUserFailed(message));
   }
 }
 function* watchFetchingUserById() {
