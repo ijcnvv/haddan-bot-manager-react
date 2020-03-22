@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers } from "../../actions/usersActions";
-import { getStorageSortBy, setStorageSortBy } from "../../utils/sort";
+import { fetchUsers } from "actions/usersActions";
+import { getStorageSortBy, setStorageSortBy } from "utils/sort";
 
-import Loader from "../../components/shared/loader/loader";
-import Select from "../../components/shared/select/select";
-import Input from "../../components/shared/input/input";
-import Button from "../../components/shared/button/button";
-import Alert from "../../components/shared/alert/alert";
+import Loader from "components/shared/loader/loader";
+import Select from "components/shared/select/select";
+import Input from "components/shared/input/input";
+import Button from "components/shared/button/button";
+import Alert from "components/shared/alert/alert";
 import Profit from "./modules/profit";
 import UsersList from "./modules/usersList";
 import AddUserPopup from "./modules/addUserPopup";

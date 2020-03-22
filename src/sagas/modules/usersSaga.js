@@ -4,9 +4,9 @@ import {
   fetchUsersFailed,
   fetchUsersSucceeded,
   fetchAddUserSucceeded
-} from "../../actions/usersActions";
-import { USERS_FETCH_DATA, USERS_ADD_USER } from "../../constants";
-import { ajaxGetUsers, ajaxCreateUser } from "../../api";
+} from "actions/usersActions";
+import { USERS_FETCH_DATA, USERS_ADD_USER } from "constants/index";
+import { ajaxGetUsers, ajaxCreateUser } from "api/index";
 
 function* fetchUsers() {
   try {

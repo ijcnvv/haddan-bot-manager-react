@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchUserById, onPathLeave } from "../../actions/userActions";
-import Loader from "../../components/shared/loader/loader";
+import { fetchUserById, onPathLeave } from "actions/userActions";
+import Loader from "components/shared/loader/loader";
+import Alert from "components/shared/alert/alert";
 import Logs from "./modules/logs";
 import Popup from "./popups";
 import "./user.scss";
 
 const UserPage = () => {
   const dispatch = useDispatch();
-  const { user, loading, loaded } = useSelector(({ user }) => user);
+  const { user, loading, loaded, error } = useSelector(({ user }) => user);
   const [isPopupShowed, setPopupShowing] = useState(false);
   const [popupType, setPopupType] = useState(null);
   const [editType, setEditType] = useState(null);
@@ -34,7 +35,6 @@ const UserPage = () => {
     dispatch(fetchUserById(id));
 
     return () => dispatch(onPathLeave());
-    // getUserById(id).then(() => setLoaded(true));
     // eslint-disable-next-line
   }, []);
 
@@ -43,6 +43,7 @@ const UserPage = () => {
   return (
     <div className="user">
       <Loader loading={loading} />
+      {error ? <Alert error={error} /> : null}
 
       {isEmpty ? null : (
         <div className="user__wrapper">

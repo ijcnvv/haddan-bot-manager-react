@@ -1,11 +1,11 @@
 import { put, call, takeLatest } from "redux-saga/effects";
-import { UPDATES_FETCH_DATA } from "../../constants";
-import { ajaxGetUpdates } from "../../api";
+import { UPDATES_FETCH_DATA } from "constants/index";
+import { ajaxGetUpdates } from "api/index";
 import {
   fetchUpdatesPending,
   fetchUpdatesFailed,
   fetchUpdatesSucceeded
-} from "../../actions/updatesActions";
+} from "actions/updatesActions";
 
 function* getUpdates() {
   try {

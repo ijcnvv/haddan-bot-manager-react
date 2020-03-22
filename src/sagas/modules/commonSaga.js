@@ -3,19 +3,19 @@ import {
   COMMON_FETCH_AUTH_BY_PASSWORD,
   COMMON_FETCH_AUTH_BY_TOKEN,
   COMMON_FETCH_LOGOUT
-} from "../../constants";
+} from "constants/index";
 import {
   commonFetchFailed,
   commonFetchPending,
   fetchAuthSucceeded,
   fetchLogoutSucceeded
-} from "../../actions/commonActions";
+} from "actions/commonActions";
 import {
   ajaxAuthByEmailAndPassword,
   ajaxAuthByToken,
   ajaxLogout
-} from "../../api";
-import { saveToken, clearToken } from "../../utils/token";
+} from "api/index";
+import { saveToken, clearToken } from "utils/token";
 
 function* authByEP({ payload }) {
   try {

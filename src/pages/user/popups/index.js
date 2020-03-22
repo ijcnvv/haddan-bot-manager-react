@@ -1,6 +1,6 @@
 import React from "react";
+import Popup from "components/shared/popup/popup";
 import EditUser from "./modules/edit";
-import Popup from "../../../components/shared/popup/popup";
 
 const UserPopup = ({ type, closePopup, ...rest }) => {
   const types = {
