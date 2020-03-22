@@ -63,7 +63,7 @@ h3 {
 
 .container {
   width: 100%;
-  max-width: 720px;
+  max-width: 480px;
   padding: 0 0.8rem;
 }
 
@@ -76,4 +76,9 @@ button + button {
   bottom: 20px;
   right: 20px;
   z-index: 10;
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
 }

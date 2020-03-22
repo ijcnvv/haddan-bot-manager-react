@@ -10,11 +10,12 @@
   font-weight: normal;
 
   &__text {
-    margin-right: 20px;
+    margin-right: 25px;
   }
 
   &__close {
     position: absolute;
+    cursor: pointer;
     right: 10px;
     top: 10px;
     z-index: 1;

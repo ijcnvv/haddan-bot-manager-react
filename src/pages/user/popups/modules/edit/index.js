@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchEditingUser } from "actions/userActions";
 import Loader from "components/shared/loader/loader";
-import CashPopup from "./modules/cash";
+import ComplicatedPopup from "../editComplicated";
+import CommonPopup from "../editSimple";
 import "./edit.scss";
 
 const EditPropertyPopup = ({ editType, closePopup, ...rest }) => {
@@ -11,17 +12,12 @@ const EditPropertyPopup = ({ editType, closePopup, ...rest }) => {
   const { loading } = useSelector(({ user }) => user);
   const { id } = useParams();
   const types = {
-    cash: CashPopup,
-    common: ""
+    cash: { Component: ComplicatedPopup, title: "Баланс, руб." },
+    price: { Component: CommonPopup, title: "Тариф, руб/день" },
+    discount: { Component: CommonPopup, title: "Скидка, %" },
+    vision: { Component: ComplicatedPopup, title: "Капчи, шт" }
   };
-  const typeNames = {
-    cash: "Баланс, руб.",
-    price: "Тариф, руб/день",
-    discount: "Скидка, %",
-    vision: "Капчи, шт"
-  };
-  const title = typeNames[editType];
-  const Component = types[editType || "common"];
+  const { Component, title } = types[editType];
 
   const onChangeHandler = (type, value) => {
     dispatch(
@@ -33,7 +29,7 @@ const EditPropertyPopup = ({ editType, closePopup, ...rest }) => {
     <div className="edit">
       <Loader loading={loading} />
       <h3 className="edit__title">{title}</h3>
-      <Component {...rest} onChange={onChangeHandler} />
+      <Component {...rest} onChange={onChangeHandler} property={editType} />
     </div>
   );
 };

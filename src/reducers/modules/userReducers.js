@@ -19,10 +19,10 @@ const handlers = {
     loaded: false,
     error: false
   }),
-  [USER_FETCH_DATA_FAILED]: state => ({
+  [USER_FETCH_DATA_FAILED]: (state, { payload }) => ({
     ...state,
     loading: false,
-    error: true
+    error: payload
   }),
   [USER_FETCH_DATA_SUCCSEEDED]: (state, { payload }) => ({
     ...state,

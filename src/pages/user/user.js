@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import { fetchUserById, onPathLeave } from "actions/userActions";
 import Loader from "components/shared/loader/loader";
 import Alert from "components/shared/alert/alert";
+import Button from "components/shared/button/button";
 import Logs from "./modules/logs";
-import Popup from "./popups";
+import UserPopup from "./popups";
 import "./user.scss";
 
 const UserPage = () => {
@@ -62,15 +63,24 @@ const UserPage = () => {
             <i className="material-icons user__edit">edit</i>
             <span>Баланс {user.cash} руб.</span>
           </div>
-          <div className="user__row">
+          <div
+            className="user__row editable"
+            onClick={() => showPopup("editUser", "price")}
+          >
             <i className="material-icons user__edit">edit</i>
             <span>Тариф {user.price} руб/день.</span>
           </div>
-          <div className="user__row">
+          <div
+            className="user__row editable"
+            onClick={() => showPopup("editUser", "discount")}
+          >
             <i className="material-icons user__edit">edit</i>
             <span>Скидка {user.discount} %</span>
           </div>
-          <div className="user__row space">
+          <div
+            className="user__row space editable"
+            onClick={() => showPopup("editUser", "vision")}
+          >
             <i className="material-icons user__edit">edit</i>
             <span>Капчи {user.vision} шт.</span>
           </div>
@@ -87,8 +97,19 @@ const UserPage = () => {
 
       <Logs data={user.logs} />
 
+      <Button
+        className="btn-floating blue darken-3"
+        onClick={() => showPopup("addPlayer")}
+      >
+        +
+      </Button>
+
       {isPopupShowed ? (
-        <Popup type={popupType} editType={editType} closePopup={closePopup} />
+        <UserPopup
+          type={popupType}
+          editType={editType}
+          closePopup={closePopup}
+        />
       ) : null}
     </div>
   );

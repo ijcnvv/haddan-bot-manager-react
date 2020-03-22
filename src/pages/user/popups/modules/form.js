@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import Input from "components/shared/input/input";
 import Button from "components/shared/button/button";
 
-const PopupForm = ({ onBack, icon = true, onChange, title, className }) => {
+const PopupForm = ({
+  onBack = null,
+  icon = true,
+  onChange,
+  title,
+  className = "",
+  label = "Значение"
+}) => {
   const [count, setCount] = useState("");
   const isValidCount = count && +count > 0;
   const classes = `input-wrapper ${className}`;
@@ -17,7 +24,7 @@ const PopupForm = ({ onBack, icon = true, onChange, title, className }) => {
         </i>
       ) : null}
       <Input
-        placeholder="Значение"
+        placeholder={label}
         type="number"
         value={count}
         onChange={inputHandler}
