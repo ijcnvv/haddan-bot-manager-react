@@ -34,8 +34,8 @@ const Logs = ({ data = [] }) => {
   ));
 
   return (
-    <div className="user__logs">
-      <h3 className="user__logs-title">Последние операции</h3>
+    <div className="user__section">
+      <h3 className="user__sub-title">Последние операции</h3>
       {template}
     </div>
   );

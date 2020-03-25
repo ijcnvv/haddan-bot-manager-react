@@ -39,11 +39,13 @@
     margin-right: 10px;
   }
 
-  &__logs {
+  &__section {
     margin-top: 2em;
   }
 
-  &__logs-title {
+  &__sub-title {
+    display: flex;
+    align-items: center;
     font-size: 20px;
     margin-bottom: 0.5em;
   }

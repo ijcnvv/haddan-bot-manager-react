@@ -6,6 +6,7 @@ import Loader from "components/shared/loader/loader";
 import Alert from "components/shared/alert/alert";
 import Button from "components/shared/button/button";
 import Logs from "./modules/logs";
+import Players from "./modules/players";
 import UserPopup from "./popups";
 import "./user.scss";
 
@@ -85,15 +86,13 @@ const UserPage = () => {
             <span>Капчи {user.vision} шт.</span>
           </div>
           <div className="user__row">
-            <i className="material-icons">people</i>
-            <span>Персонажей - {user.players}</span>
-          </div>
-          <div className="user__row">
             <i className="material-icons">update</i>
             <span>Обновлено - {user.last_update}</span>
           </div>
         </div>
       )}
+
+      <Players data={user.players} />
 
       <Logs data={user.logs} />
 
