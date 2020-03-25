@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  @include scrollbar(8px);
+  @include scrollbar(6px);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

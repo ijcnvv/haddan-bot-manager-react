@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import PropTypes from "prop-types";
 import "./alert.scss";
 
 const Alert = ({ error }) => {
@@ -16,6 +17,10 @@ const Alert = ({ error }) => {
       ) : null}
     </Fragment>
   );
+};
+
+Alert.propTypes = {
+  error: PropTypes.string
 };
 
 export default Alert;

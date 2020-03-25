@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import "./loader.scss";
 
 const Loader = ({ abs = true, loading = true }) => {
@@ -19,6 +20,11 @@ const Loader = ({ abs = true, loading = true }) => {
       ) : null}
     </Fragment>
   );
+};
+
+Loader.propTypes = {
+  abs: PropTypes.bool,
+  loading: PropTypes.bool
 };
 
 export default Loader;

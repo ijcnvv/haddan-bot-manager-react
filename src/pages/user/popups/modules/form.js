@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Input from "components/shared/input/input";
 import Button from "components/shared/button/button";
 
 const PopupForm = ({
-  onBack = null,
-  icon = true,
+  onBack,
   onChange,
+  icon = true,
   title,
   className = "",
   label = "Значение"
@@ -34,6 +35,15 @@ const PopupForm = ({
       </Button>
     </div>
   );
+};
+
+PopupForm.propTypes = {
+  onBack: PropTypes.func,
+  onChange: PropTypes.func,
+  icon: PropTypes.bool,
+  className: PropTypes.string,
+  label: PropTypes.string,
+  title: PropTypes.string.isRequired
 };
 
 export default PopupForm;

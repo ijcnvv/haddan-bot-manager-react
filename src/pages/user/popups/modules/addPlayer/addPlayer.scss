@@ -1,6 +1,12 @@
 .add-player {
   max-width: 400px;
 
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &__title {
     margin-right: 1em;
     margin-bottom: 1.5em;

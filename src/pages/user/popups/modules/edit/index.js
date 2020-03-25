@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchEditingUser } from "actions/userActions";
+import PropTypes from "prop-types";
 import Loader from "components/shared/loader/loader";
 import ComplicatedPopup from "../editComplicated";
 import CommonPopup from "../editSimple";
@@ -32,6 +33,11 @@ const EditPropertyPopup = ({ editType, closePopup, ...rest }) => {
       <Component {...rest} onChange={onChangeHandler} property={editType} />
     </div>
   );
+};
+
+EditPropertyPopup.propTypes = {
+  editType: PropTypes.string.isRequired,
+  closePopup: PropTypes.func.isRequired
 };
 
 export default EditPropertyPopup;

@@ -26,8 +26,8 @@ const App = () => {
   return (
     <Layout>
       <Switch>
-        <PrivateRoute path="/users/:id" component={UserPage} />
-        <PrivateRoute path="/users" exact component={UsersPage} />
+        <PrivateRoute path="/users/:id" Component={UserPage} />
+        <PrivateRoute path="/users" exact Component={UsersPage} />
         <Route path="/updates" component={UpdatesPage} />
         <Route path="/logout" component={Logout} />
         <Route path="/auth" component={AuthPage} />

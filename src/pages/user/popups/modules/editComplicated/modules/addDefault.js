@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Button from "components/shared/button/button";
 
 const AddDefaultCash = ({ setPath, onChange, property }) => {
@@ -22,6 +23,12 @@ const AddDefaultCash = ({ setPath, onChange, property }) => {
       </Button>
     </div>
   );
+};
+
+AddDefaultCash.propTypes = {
+  setPath: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  property: PropTypes.string.isRequired
 };
 
 export default AddDefaultCash;

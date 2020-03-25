@@ -1,14 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import "./select.scss";
-
-/**
- * @param {String} label
- * @param {String} value
- * @param {Function} onChange
- * @param {Object, Array} options
- * @param {String} className
- * @return {JSX}
- */
 
 const Select = ({
   label = "",
@@ -87,6 +79,14 @@ const Select = ({
       {labelRendered}
     </div>
   );
+};
+
+Select.propTypes = {
+  label: PropTypes.string,
+  className: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChange: PropTypes.func.isRequired,
+  options: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
 };
 
 export default Select;

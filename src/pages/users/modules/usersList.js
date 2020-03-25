@@ -1,5 +1,6 @@
 import React from "react";
 import ListItem from "./listItem";
+import PropTypes from "prop-types";
 
 const UsersList = ({ users = [], filter = "", sortBy = "name" }) => {
   const usersFiltered = () => {
@@ -18,6 +19,12 @@ const UsersList = ({ users = [], filter = "", sortBy = "name" }) => {
   const list = sortedList.map(user => <ListItem user={user} key={user.id} />);
 
   return <div className="users__list">{list}</div>;
+};
+
+UsersList.propTypes = {
+  users: PropTypes.array.isRequired,
+  filter: PropTypes.string,
+  sortBy: PropTypes.string.isRequired
 };
 
 export default UsersList;

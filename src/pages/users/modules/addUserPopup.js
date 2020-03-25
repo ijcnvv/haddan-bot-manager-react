@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import { fetchAddUser } from "actions/usersActions";
+import PropTypes from "prop-types";
 import Popup from "components/shared/popup/popup";
 import Loader from "components/shared/loader/loader";
 import Select from "components/shared/select/select";
@@ -71,6 +72,10 @@ const AddUser = ({ closePopup }) => {
       </div>
     </Popup>
   );
+};
+
+AddUser.propTypes = {
+  closePopup: PropTypes.func.isRequired
 };
 
 export default AddUser;

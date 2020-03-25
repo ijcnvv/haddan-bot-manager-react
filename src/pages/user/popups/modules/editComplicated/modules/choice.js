@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Button from "components/shared/button/button";
 
 const Choice = ({ setPath }) => {
@@ -12,6 +13,10 @@ const Choice = ({ setPath }) => {
       </Button>
     </div>
   );
+};
+
+Choice.propTypes = {
+  setPath: PropTypes.func.isRequired
 };
 
 export default Choice;

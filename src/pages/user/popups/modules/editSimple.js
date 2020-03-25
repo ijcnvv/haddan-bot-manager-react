@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import PopupForm from "./form";
 
 const CommonPopup = ({ onChange }) => {
@@ -10,6 +11,10 @@ const CommonPopup = ({ onChange }) => {
       title="Задать"
     />
   );
+};
+
+CommonPopup.propTypes = {
+  onChange: PropTypes.func.isRequired
 };
 
 export default CommonPopup;

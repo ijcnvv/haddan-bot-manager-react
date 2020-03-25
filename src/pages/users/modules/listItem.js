@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./listItem.scss";
 
 const User = ({ user }) => {
@@ -25,6 +26,16 @@ const User = ({ user }) => {
       <div className="list-item__cash">{user.cash} руб.</div>
     </div>
   );
+};
+
+User.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    network: PropTypes.string.isRequired,
+    cash: PropTypes.number.isRequired
+  })
 };
 
 export default User;

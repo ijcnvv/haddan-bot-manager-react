@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchEditingUser } from "actions/userActions";
+import PropTypes from "prop-types";
 import "./logs.scss";
 
 const Logs = ({ data = [] }) => {
@@ -38,6 +39,10 @@ const Logs = ({ data = [] }) => {
       {template}
     </div>
   );
+};
+
+Logs.propTypes = {
+  data: PropTypes.array
 };
 
 export default Logs;

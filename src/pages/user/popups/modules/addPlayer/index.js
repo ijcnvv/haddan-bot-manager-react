@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchAddPlayer } from "actions/userActions";
+import PropTypes from "prop-types";
 import Loader from "components/shared/loader/loader";
 import PopupForm from "../form";
 import "./addPlayer.scss";
@@ -24,9 +25,14 @@ const EditPropertyPopup = ({ closePopup }) => {
         onChange={onChangeHandler}
         title="Добавить"
         label="Id персонажа"
+        className="wrapper"
       />
     </div>
   );
+};
+
+EditPropertyPopup.propTypes = {
+  closePopup: PropTypes.func.isRequired
 };
 
 export default EditPropertyPopup;

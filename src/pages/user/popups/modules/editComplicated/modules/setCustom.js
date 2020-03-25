@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import PopupForm from "../../form";
 
-const AddCustomCashValue = ({ setPath, onChange }) => {
+const SetCustomCashValue = ({ setPath, onChange }) => {
   return (
     <PopupForm
       className="wrapper"
@@ -12,4 +13,9 @@ const AddCustomCashValue = ({ setPath, onChange }) => {
   );
 };
 
-export default AddCustomCashValue;
+SetCustomCashValue.propTypes = {
+  setPath: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
+};
+
+export default SetCustomCashValue;

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import "./popup.scss";
 
 const Popup = ({ children, className = "", closePopup }) => {
@@ -25,6 +26,12 @@ const Popup = ({ children, className = "", closePopup }) => {
       </div>
     </div>
   );
+};
+
+Popup.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  closePopup: PropTypes.func.isRequired
 };
 
 export default Popup;
