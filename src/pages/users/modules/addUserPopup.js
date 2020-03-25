@@ -69,7 +69,7 @@ const AddUser = ({ closePopup }) => {
               value={network}
               onChange={setNetwork}
               list={networkList}
-              label="Сортировка"
+              label="Соц. сеть"
             />
           </div>
           <Button
