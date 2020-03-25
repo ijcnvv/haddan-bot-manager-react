@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
-import Input from "../../components/shared/input/input";
-import Button from "../../components/shared/button/button";
-import Loader from "../../components/shared/loader/loader";
-import { fetchAuthByEmailAndPassword } from "../../actions/commonActions";
+import { useForm } from "react-hook-form";
+import Input from "components/shared/input/input";
+import Button from "components/shared/button/button";
+import Loader from "components/shared/loader/loader";
+import { fetchAuthByEmailAndPassword } from "actions/commonActions";
 import "./auth.scss";
 
 const AuthPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit, errors } = useForm();
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -17,8 +17,7 @@ const AuthPage = () => {
   const from = location.state && location.state.from.pathname;
   const isFormHidden = isAuth || (from && loading);
 
-  const onFormSubmit = e => {
-    e.preventDefault();
+  const onFormSubmit = ({ email, password }) => {
     dispatch(fetchAuthByEmailAndPassword({ email, password }));
   };
 
@@ -32,27 +31,26 @@ const AuthPage = () => {
       {isFormHidden ? null : (
         <div className="card-content">
           <div className="card-title">Авторизация</div>
-          <form className="auth__form">
+          <form className="auth__form" onSubmit={handleSubmit(onFormSubmit)}>
             <Input
               type="email"
               label="Email"
               placeholder="Введите email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
+              name="email"
+              register={register({ required: "Email is required" })}
+              error={errors.email}
             />
             <Input
               type="password"
+              name="password"
               label="Пароль"
               placeholder="Введите пароль"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
+              register={register({ required: "Password is required" })}
+              error={errors.password}
             />
             <Button
               type="submit"
               className="waves-effect waves-light btn grey darken-4"
-              onClick={onFormSubmit}
             >
               <i className="material-icons left">lock</i>
               Вход

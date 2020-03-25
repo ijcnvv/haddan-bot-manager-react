@@ -5,7 +5,7 @@ import "./select.scss";
  * @param {String} label
  * @param {String} value
  * @param {Function} onChange
- * @param {Object, Array} list
+ * @param {Object, Array} options
  * @param {String} className
  * @return {JSX}
  */
@@ -14,7 +14,7 @@ const Select = ({
   label = "",
   value = "",
   onChange,
-  list,
+  options,
   className = "",
   ...rest
 }) => {
@@ -26,13 +26,13 @@ const Select = ({
     active ? "active" : ""
   }`;
 
-  const listFormatted = Array.isArray(list)
-    ? list.reduce((acc, el) => {
+  const listFormatted = Array.isArray(options)
+    ? options.reduce((acc, el) => {
         const obj =
           typeof el === "string" ? { [el]: el } : { [el.value]: el.text };
         return { ...acc, ...obj };
       }, {})
-    : list;
+    : options;
 
   const itemClickHandler = itemValue => {
     onChange(itemValue);

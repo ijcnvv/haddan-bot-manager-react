@@ -1,82 +1,70 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAddUser } from "../../../actions/usersActions";
-
-import Popup from "../../../components/shared/popup/popup";
-import Loader from "../../../components/shared/loader/loader";
-import Select from "../../../components/shared/select/select";
-import Input from "../../../components/shared/input/input";
-import Button from "../../../components/shared/button/button";
+import { useForm, Controller } from "react-hook-form";
+import { fetchAddUser } from "actions/usersActions";
+import Popup from "components/shared/popup/popup";
+import Loader from "components/shared/loader/loader";
+import Select from "components/shared/select/select";
+import Input from "components/shared/input/input";
+import Button from "components/shared/button/button";
 import "./addUserPopup.scss";
 
 const AddUser = ({ closePopup }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { register, handleSubmit, errors, control } = useForm();
   const { loading } = useSelector(({ users }) => users);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [player_id, setPlayerId] = useState("");
-  const [network, setNetwork] = useState("telegram");
   const networkList = {
     telegram: "Telegram",
     skype: "Skype",
     whatsapp: "WhatsApp"
   };
-
   const submitClassName = `btn${loading ? " disabled" : ""}`;
-
-  const onFormSubmit = e => {
-    e.preventDefault();
-    if (!name || !email || !player_id) return;
-    const params = { name, email, player_id, network };
-    dispatch(fetchAddUser(params, onSuccess));
-  };
-
   const onSuccess = id => history.push(`/users/${id}`);
+  const onFormSubmit = data => dispatch(fetchAddUser(data, onSuccess));
 
   return (
     <Popup closePopup={closePopup} className="visible">
       <div className="create-user">
         <Loader loading={loading} />
         <h3 className="create-user__title">Добавить пользователя</h3>
-        <form>
+        <form onSubmit={handleSubmit(onFormSubmit)}>
           <div className="row">
             <Input
               className="col s12"
-              value={name}
-              onChange={e => setName(e.target.value)}
               placeholder="Имя пользователя"
-              required
+              name="name"
+              register={register({ required: "Name is required" })}
+              error={errors.name}
             />
             <Input
               className="col s12"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
               placeholder="Email"
-              required
+              type="email"
+              name="email"
+              register={register({ required: "Email is required" })}
+              error={errors.email}
             />
             <Input
               type="number"
               className="col s6"
-              value={player_id}
-              onChange={e => setPlayerId(e.target.value)}
               placeholder="ID персонажа"
-              required
+              name="player_id"
+              register={register({ required: "ID is required" })}
+              error={errors.player_id}
             />
-            <Select
-              className="col s6"
-              value={network}
-              onChange={setNetwork}
-              list={networkList}
+            <Controller
+              as={Select}
+              name="network"
+              control={control}
               label="Соц. сеть"
+              className="col s6"
+              defaultValue="telegram"
+              options={networkList}
             />
           </div>
-          <Button
-            type="submit"
-            className={submitClassName}
-            onClick={onFormSubmit}
-          >
+          <Button type="submit" className={submitClassName}>
             Создать
           </Button>
         </form>

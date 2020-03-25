@@ -50,7 +50,7 @@ const UsersPage = () => {
         <Select
           value={sortBy}
           onChange={sortHandler}
-          list={sortList}
+          options={sortList}
           label="Сортировка"
         />
       </div>
