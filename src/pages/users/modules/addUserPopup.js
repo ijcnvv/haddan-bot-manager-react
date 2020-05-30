@@ -15,15 +15,16 @@ const AddUser = ({ closePopup }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { register, handleSubmit, errors, control } = useForm();
-  const { loading } = useSelector(({ users }) => users);
+  const { loading, users } = useSelector(({ users }) => users);
   const networkList = {
     telegram: "Telegram",
     skype: "Skype",
-    whatsapp: "WhatsApp"
+    whatsapp: "WhatsApp",
   };
+  const usersList = users.map(({ id, name }) => ({ value: id, text: name }));
   const submitClassName = `btn${loading ? " disabled" : ""}`;
-  const onSuccess = id => history.push(`/users/${id}`);
-  const onFormSubmit = data => dispatch(fetchAddUser(data, onSuccess));
+  const onSuccess = (id) => history.push(`/users/${id}`);
+  const onFormSubmit = (data) => dispatch(fetchAddUser(data, onSuccess));
 
   return (
     <Popup closePopup={closePopup} className="visible">
@@ -59,10 +60,19 @@ const AddUser = ({ closePopup }) => {
               as={Select}
               name="network"
               control={control}
-              label="Соц. сеть"
+              label="Network"
               className="col s6"
               defaultValue="telegram"
               options={networkList}
+            />
+            <Controller
+              as={Select}
+              name="cashback_id"
+              control={control}
+              label="From"
+              className="col s12"
+              defaultValue=""
+              options={usersList}
             />
           </div>
           <Button type="submit" className={submitClassName}>
@@ -75,7 +85,7 @@ const AddUser = ({ closePopup }) => {
 };
 
 AddUser.propTypes = {
-  closePopup: PropTypes.func.isRequired
+  closePopup: PropTypes.func.isRequired,
 };
 
 export default AddUser;

@@ -65,6 +65,10 @@ h3 {
   width: 100%;
   max-width: 480px;
   padding: 0 0.8rem;
+
+  &_md {
+    max-width: 720px;
+  }
 }
 
 button + button {
@@ -75,7 +79,7 @@ button + button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 10;
+  z-index: 5;
 }
 
 .disabled {

@@ -5,6 +5,7 @@ import { fetchAuthByToken } from "actions/commonActions";
 import Layout from "hoc/layout";
 import PrivateRoute from "hoc/privateRoute";
 import InfoPage from "pages/info/info";
+import PricePage from "pages/price/price";
 import UpdatesPage from "pages/updates/updates";
 import AuthPage from "pages/auth/auth";
 import UsersPage from "pages/users/users";
@@ -29,6 +30,7 @@ const App = () => {
         <PrivateRoute path="/users/:id" Component={UserPage} />
         <PrivateRoute path="/users" exact Component={UsersPage} />
         <Route path="/updates" component={UpdatesPage} />
+        <Route path="/price" component={PricePage} />
         <Route path="/logout" component={Logout} />
         <Route path="/auth" component={AuthPage} />
         <Route path="/" exact component={InfoPage} />

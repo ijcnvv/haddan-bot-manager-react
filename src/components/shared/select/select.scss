@@ -1,11 +1,17 @@
 .select-wrapper {
   .caret {
+    z-index: 2 !important;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   .dropdown-content {
+    max-height: 250px;
+    overflow: auto;
+
     &.active {
+      top: 100%;
       display: block;
       opacity: 1;
       width: 100%;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchUserById, onPathLeave } from "actions/userActions";
@@ -38,7 +39,7 @@ const UserPage = () => {
 
     return () => dispatch(onPathLeave());
     // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   if (noData) return <div>Пользователя не существует</div>;
 
@@ -85,6 +86,17 @@ const UserPage = () => {
             <i className="material-icons user__edit">edit</i>
             <span>Капчи {user.vision} шт.</span>
           </div>
+
+          {user.cashback_id ? (
+            <div className="user__row">
+              <i className="material-icons">attach_money</i>
+              <span>10% кэшбэк для&nbsp;</span>
+              <NavLink to={`/users/${user.cashback_id}`}>
+                {user.cashback_name}
+              </NavLink>
+            </div>
+          ) : null}
+
           <div className="user__row">
             <i className="material-icons">update</i>
             <span>Обновлено - {user.last_update}</span>

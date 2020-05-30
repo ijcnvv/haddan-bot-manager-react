@@ -2,17 +2,19 @@ import { takeLatest, put, all, call } from "redux-saga/effects";
 import {
   USER_FETCH_DATA,
   USER_EDIT_PROPS,
-  USER_ADD_PLAYER
+  USER_ADD_PLAYER,
+  USER_DELETE_PLAYER,
 } from "constants/index";
 import {
   fetchUserPending,
   fetchUserFailed,
-  fetchUserSucceeded
+  fetchUserSucceeded,
 } from "actions/userActions";
 import {
   ajaxGetUserById,
   ajaxEditUserProperty,
-  ajaxAddPlayer
+  ajaxAddPlayer,
+  ajaxDeletePlayer,
 } from "api/index";
 
 function* fetchUser({ payload }) {
@@ -47,6 +49,16 @@ function* addPlayer({ payload, callback }) {
   }
 }
 
+function* deletePlayer({ payload }) {
+  try {
+    yield put(fetchUserPending());
+    const user = yield call(ajaxDeletePlayer, payload);
+    yield put(fetchUserSucceeded(user));
+  } catch ({ message }) {
+    yield put(fetchUserFailed(message));
+  }
+}
+
 function* watchFetchingUserById() {
   yield takeLatest(USER_FETCH_DATA, fetchUser);
 }
@@ -59,10 +71,15 @@ function* watchAddingPlayer() {
   yield takeLatest(USER_ADD_PLAYER, addPlayer);
 }
 
+function* watchDeletingPlayer() {
+  yield takeLatest(USER_DELETE_PLAYER, deletePlayer);
+}
+
 export default function* userSagas() {
   yield all([
     watchFetchingUserById(),
     watchEditingUserProps(),
-    watchAddingPlayer()
+    watchAddingPlayer(),
+    watchDeletingPlayer(),
   ]);
 }

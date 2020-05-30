@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import "./info.scss";
+import React from "react";
 
 const list = [
   "Выбор класса персонажа",
@@ -38,29 +37,10 @@ const listItem = (text, index) => (
 );
 
 const InfoPage = () => (
-  <Fragment>
-    <h1>Функционал бота</h1>
+  <>
+    <h2>Функционал бота</h2>
     <ul>{list.map(listItem)}</ul>
-    <div className="info-footer">
-      <p>
-        Подключение&nbsp;
-        <strong>500 руб.</strong>, которые сразу поступают на баланс.
-      </p>
-      <p>
-        Стоимость подписки&nbsp;
-        <strong>10 руб/день</strong>
-      </p>
-      <p>
-        Оплата за полгода вперед и более, а также подключение каждого мульта
-        добавляет скидку&nbsp;
-        <strong>10%</strong> на ежедневное списание, но не более 50% суммарно.
-      </p>
-      <p>
-        Стоимость автоматического распознавания капч&nbsp;
-        <strong>$5 за 1000 запросов</strong>
-      </p>
-    </div>
-  </Fragment>
+  </>
 );
 
 export default InfoPage;

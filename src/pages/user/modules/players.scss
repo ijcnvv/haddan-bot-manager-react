@@ -1,0 +1,11 @@
+.player {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.5em;
+
+  &__delete {
+    margin-left: auto;
+    cursor: pointer;
+  }
+}

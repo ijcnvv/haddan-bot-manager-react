@@ -11,6 +11,7 @@ const Select = ({
   ...rest
 }) => {
   const [active, setActive] = useState(false);
+  const [filter, setFilter] = useState("");
   const node = useRef();
 
   const wrapperClasses = `input-field ${className}`;
@@ -18,42 +19,58 @@ const Select = ({
     active ? "active" : ""
   }`;
 
-  const listFormatted = Array.isArray(options)
-    ? options.reduce((acc, el) => {
-        const obj =
-          typeof el === "string" ? { [el]: el } : { [el.value]: el.text };
-        return { ...acc, ...obj };
-      }, {})
-    : options;
+  const formatted = Array.isArray(options)
+    ? options
+    : Object.entries(options).map(([value, text]) => ({ value, text }));
 
-  const itemClickHandler = itemValue => {
+  const filtered = formatted.filter(({ text }) => {
+    return (
+      String(text).toLowerCase().indexOf(String(filter).toLowerCase()) !== -1
+    );
+  });
+
+  const sorted = [...filtered].sort((a, b) => a.text - b.text);
+
+  const listRendered = sorted.map(({ value: itemValue, text }, index) => {
+    const itemClassname = itemValue === value ? "selected" : "";
+
+    return (
+      <li
+        key={index}
+        className={itemClassname}
+        onClick={() => itemClickHandler(itemValue)}
+      >
+        <span>{text}</span>
+      </li>
+    );
+  });
+
+  const labelRendered = label ? <label>{label}</label> : null;
+  const textOfValue = active
+    ? filter
+    : sorted.find((el) => el.value === value)?.text || value;
+
+  const itemClickHandler = (itemValue) => {
     onChange(itemValue);
+    setFilter("");
     setActive(false);
   };
 
-  const listRendered = Object.entries(listFormatted).map(
-    ([itemValue, text], index) => {
-      const itemClassname = itemValue === value ? "selected" : "";
-
-      return (
-        <li
-          key={index}
-          className={itemClassname}
-          onClick={() => itemClickHandler(itemValue)}
-        >
-          <span>{text}</span>
-        </li>
-      );
-    }
-  );
-
-  const labelRendered = label ? <label>{label}</label> : null;
-  const textOfValue = listFormatted[value] || value;
-
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (node.current.contains(e.target)) return;
 
     setActive(false);
+    setFilter("");
+  };
+
+  const closeHandler = (e) => {
+    e.preventDefault();
+    onChange("");
+    setActive(false);
+  };
+
+  const filterHandler = (e) => {
+    setFilter(e.target.value);
   };
 
   useEffect(() => {
@@ -70,11 +87,22 @@ const Select = ({
           placeholder={label}
           value={textOfValue}
           onClick={() => setActive(true)}
-          onChange={() => null}
+          onChange={filterHandler}
           {...rest}
         />
         <ul className={listClasses}>{listRendered}</ul>
-        <span className="material-icons caret">keyboard_arrow_down</span>
+        {value && active ? (
+          <span className="material-icons caret" onClick={closeHandler}>
+            close
+          </span>
+        ) : (
+          <span
+            className="material-icons caret"
+            onClick={() => setActive(true)}
+          >
+            keyboard_arrow_down
+          </span>
+        )}
       </div>
       {labelRendered}
     </div>
@@ -86,7 +114,7 @@ Select.propTypes = {
   className: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func.isRequired,
-  options: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+  options: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 export default Select;
