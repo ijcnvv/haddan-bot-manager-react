@@ -27,7 +27,7 @@ const AddUser = ({ closePopup }) => {
   const onFormSubmit = (data) => dispatch(fetchAddUser(data, onSuccess));
 
   return (
-    <Popup closePopup={closePopup} className="visible">
+    <Popup closePopup={closePopup}>
       <div className="create-user">
         <Loader loading={loading} />
         <h3 className="create-user__title">Добавить пользователя</h3>
