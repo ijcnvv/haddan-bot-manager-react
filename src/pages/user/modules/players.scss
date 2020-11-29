@@ -4,8 +4,13 @@
   align-items: center;
   padding-bottom: 1.5em;
 
-  &__delete {
+  &__reset {
     margin-left: auto;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &__delete {
     cursor: pointer;
   }
 }

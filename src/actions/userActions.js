@@ -7,6 +7,7 @@ import {
   USER_EDIT_PROPS,
   USER_ADD_PLAYER,
   USER_DELETE_PLAYER,
+  USER_RESET_PLAYER,
 } from "../constants";
 
 export const fetchUserById = (id) => ({ type: USER_FETCH_DATA, payload: id });
@@ -37,8 +38,12 @@ export const fetchAddPlayer = (payload, callback) => ({
   callback,
 });
 
-export const fetchDeletePlayer = (payload, callback) => ({
+export const fetchDeletePlayer = (payload) => ({
   type: USER_DELETE_PLAYER,
   payload,
-  callback,
+});
+
+export const fetchResetPlayer = (payload) => ({
+  type: USER_RESET_PLAYER,
+  payload,
 });

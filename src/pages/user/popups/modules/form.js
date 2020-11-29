@@ -9,12 +9,12 @@ const PopupForm = ({
   icon = true,
   title,
   className = "",
-  label = "Значение"
+  label = "Значение",
 }) => {
   const [count, setCount] = useState("");
-  const isValidCount = count && +count > 0;
+  const isValidCount = String(count).length > 0 && +count >= 0;
   const classes = `input-wrapper ${className}`;
-  const inputHandler = e => setCount(e.target.value);
+  const inputHandler = (e) => setCount(e.target.value);
   const clickHandler = () => isValidCount && onChange(+count);
 
   return (
@@ -43,7 +43,7 @@ PopupForm.propTypes = {
   icon: PropTypes.bool,
   className: PropTypes.string,
   label: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default PopupForm;

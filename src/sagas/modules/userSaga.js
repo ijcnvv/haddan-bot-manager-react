@@ -4,6 +4,7 @@ import {
   USER_EDIT_PROPS,
   USER_ADD_PLAYER,
   USER_DELETE_PLAYER,
+  USER_RESET_PLAYER,
 } from "constants/index";
 import {
   fetchUserPending,
@@ -15,6 +16,7 @@ import {
   ajaxEditUserProperty,
   ajaxAddPlayer,
   ajaxDeletePlayer,
+  ajaxResetPlayer,
 } from "api/index";
 
 function* fetchUser({ payload }) {
@@ -59,6 +61,16 @@ function* deletePlayer({ payload }) {
   }
 }
 
+function* resetPlayer({ payload }) {
+  try {
+    yield put(fetchUserPending());
+    const user = yield call(ajaxResetPlayer, payload);
+    yield put(fetchUserSucceeded(user));
+  } catch ({ message }) {
+    yield put(fetchUserFailed(message));
+  }
+}
+
 function* watchFetchingUserById() {
   yield takeLatest(USER_FETCH_DATA, fetchUser);
 }
@@ -75,11 +87,16 @@ function* watchDeletingPlayer() {
   yield takeLatest(USER_DELETE_PLAYER, deletePlayer);
 }
 
+function* watchResetingPlayer() {
+  yield takeLatest(USER_RESET_PLAYER, resetPlayer);
+}
+
 export default function* userSagas() {
   yield all([
     watchFetchingUserById(),
     watchEditingUserProps(),
     watchAddingPlayer(),
     watchDeletingPlayer(),
+    watchResetingPlayer(),
   ]);
 }

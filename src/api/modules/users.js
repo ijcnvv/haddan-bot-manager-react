@@ -30,6 +30,11 @@ const ajaxDeletePlayer = (payload) => {
   return ajax.get("/api.php", params);
 };
 
+const ajaxResetPlayer = (payload) => {
+  const params = { get: "reset_player", ...payload };
+  return ajax.get("/api.php", params);
+};
+
 export {
   ajaxGetUsers,
   ajaxGetUserById,
@@ -37,4 +42,5 @@ export {
   ajaxCreateUser,
   ajaxDeletePlayer,
   ajaxDeleteUser,
+  ajaxResetPlayer,
 };

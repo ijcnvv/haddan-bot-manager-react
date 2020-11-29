@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchDeletePlayer } from "actions/userActions";
+import { fetchDeletePlayer, fetchResetPlayer } from "actions/userActions";
 import "./players.scss";
 
 const Players = ({ data = [] }) => {
@@ -17,17 +17,26 @@ const Players = ({ data = [] }) => {
     dispatch(fetchDeletePlayer({ id, player_id }));
   };
 
+  const resetHandler = (player_id) => {
+    if (!window.confirm(`Сбросить инкорны ${player_id}?`)) return;
+    dispatch(fetchResetPlayer({ id, player_id }));
+  };
+
   const list = data.map((id) => (
     <div className="player" key={id}>
       <span>{id}</span>
-      {data.length > 1 ? (
-        <i
-          className="material-icons player__delete"
-          onClick={() => deleteHandler(id)}
-        >
-          delete
-        </i>
-      ) : null}
+      <i
+        className="material-icons player__reset"
+        onClick={() => resetHandler(id)}
+      >
+        undo
+      </i>
+      <i
+        className="material-icons player__delete"
+        onClick={() => deleteHandler(id)}
+      >
+        delete
+      </i>
     </div>
   ));
 
