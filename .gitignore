@@ -2,14 +2,18 @@
 
 # dependencies
 /node_modules
-/.pnp
+/cron
+/.pnhp
 .pnp.js
+/.php
+.php.js
 
 # testing
 /coverage
 
 # production
 /build
+/public/api
 
 # misc
 .DS_Store
