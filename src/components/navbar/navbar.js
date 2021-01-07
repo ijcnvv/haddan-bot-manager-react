@@ -1,16 +1,28 @@
 import React, { Fragment, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./navbar.scss";
 
+const titles = {
+  "/": "Главная",
+  "/price": "Стоимость",
+  "/updates": "Обновления",
+  "/users": "Пользователи",
+  "/auth": "Авторизация",
+  DEFAULT: "",
+};
+
 const Navbar = () => {
   const [open, toggleOpen] = useState(false);
+  const { pathname } = useLocation();
   const { isAuth } = useSelector(({ common }) => common);
   const commonLinks = [
     { to: "/", label: "Главная", exact: true },
     { to: "/price", label: "Стоимость", exact: false },
     { to: "/updates", label: "Обновления", exact: false },
   ];
+
+  const title = titles[pathname] || titles.DEFAULT;
 
   const menuClickHandler = () => {
     toggleOpen(true);
@@ -71,6 +83,7 @@ const Navbar = () => {
         <div className="container">
           <div className="header__menu" onClick={menuClickHandler}>
             <i className="material-icons">menu</i>
+            {title}
           </div>
           <div className={navClassName.join(" ")} onClick={navClickHandler}>
             <div className="nav-wrapper">

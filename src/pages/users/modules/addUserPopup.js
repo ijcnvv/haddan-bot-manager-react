@@ -75,9 +75,13 @@ const AddUser = ({ closePopup }) => {
               options={usersList}
             />
           </div>
-          <Button type="submit" className={submitClassName}>
-            Создать
-          </Button>
+          <div className="row">
+            <div className="col s12">
+              <Button type="submit" className={submitClassName}>
+                Создать
+              </Button>
+            </div>
+          </div>
         </form>
       </div>
     </Popup>

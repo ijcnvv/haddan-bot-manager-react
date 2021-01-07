@@ -31,7 +31,13 @@
   &__title {
     display: flex;
     align-items: center;
+    margin-bottom: 0;
+  }
+
+  &__email {
+    margin-top: 0.5em;
     margin-bottom: 1.5em;
+    color: #777;
   }
 
   &__icon {

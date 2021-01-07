@@ -18,22 +18,24 @@ const PopupForm = ({
   const clickHandler = () => isValidCount && onChange(+count);
 
   return (
-    <div className={classes}>
+    <>
       {icon ? (
         <i className="material-icons back" onClick={onBack}>
           keyboard_backspace
         </i>
       ) : null}
-      <Input
-        placeholder={label}
-        type="number"
-        value={count}
-        onChange={inputHandler}
-      />
+      <div className={classes}>
+        <Input
+          placeholder={label}
+          type="number"
+          value={count}
+          onChange={inputHandler}
+        />
+      </div>
       <Button className="btn" onClick={clickHandler}>
         {title}
       </Button>
-    </div>
+    </>
   );
 };
 

@@ -58,6 +58,7 @@ const UserPage = () => {
             />
             <span>{user.name}</span>
           </h2>
+          <div className="user__email">{user.email}</div>
           <div
             className="user__row editable"
             onClick={() => showPopup("editUser", "cash")}

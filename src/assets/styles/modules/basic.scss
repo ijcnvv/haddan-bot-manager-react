@@ -76,9 +76,9 @@ button + button {
 }
 
 .btn-floating {
-  position: fixed;
+  position: sticky;
   bottom: 20px;
-  right: 20px;
+  left: 100%;
   z-index: 5;
 }
 
