@@ -9,7 +9,3 @@
   RewriteRule . /index.html [L]
 
 </IfModule>
-
-<FilesMatch ".(png|js|css)$">
-  Header set Cache-Control "max-age=31536000"
-</FilesMatch>

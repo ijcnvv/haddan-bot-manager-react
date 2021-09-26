@@ -1,0 +1,37 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      # Setup key
+      - name: Setup key
+        run: |
+          set -eu
+          mkdir "$HOME/.ssh"
+          echo "${{ secrets.PCKEY }}" > "$HOME/.ssh/key"
+          chmod 600 "$HOME/.ssh/key"
+      # Build
+      - name: Build
+        run: |
+          npm i
+          npm i -g yarn@1.22.4
+          yarn build
+      # Deploy
+      - name: Deploy
+        run: |
+          rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . root@94.250.250.7:${{ secrets.FOLDER }}/build
+          ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no root@94.250.250.7 ln -s ${{ secrets.FOLDER }}/api ${{ secrets.FOLDER }}/build/api
+        working-directory: ./build
