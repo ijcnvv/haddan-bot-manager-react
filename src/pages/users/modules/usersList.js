@@ -1,8 +1,8 @@
-import React from "react";
-import ListItem from "./listItem";
-import PropTypes from "prop-types";
+import React from 'react';
+import ListItem from './listItem';
+import PropTypes from 'prop-types';
 
-const UsersList = ({ users = [], filter = "", sortBy = "name" }) => {
+const UsersList = ({ users = [], filter = '', sortBy = 'name' }) => {
   const usersFiltered = () => {
     const _filter = filter.trim().toLowerCase();
 
@@ -11,11 +11,7 @@ const UsersList = ({ users = [], filter = "", sortBy = "name" }) => {
     return users.filter(({ name, email, players }) => {
       const _name = name.trim().toLowerCase();
       const _email = email.trim().toLowerCase();
-      return (
-        _name.indexOf(_filter) !== -1 ||
-        _email.indexOf(_filter) !== -1 ||
-        players.indexOf(_filter) !== -1
-      );
+      return _name.indexOf(_filter) !== -1 || _email.indexOf(_filter) !== -1 || players.indexOf(+_filter) !== -1;
     });
   };
 
