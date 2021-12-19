@@ -1,5 +1,5 @@
-@import "../../assets/styles/modules/variables.scss";
-@import "../../assets/styles/modules/mixins.scss";
+@import '../../assets/styles/modules/variables.scss';
+@import '../../assets/styles/modules/mixins.scss';
 
 .header {
   position: fixed;
@@ -7,7 +7,7 @@
   width: 100%;
 
   a.active {
-    background-color: darken($color-dark, 10%);
+    background-color: lighten($color-dark, 10%);
   }
 
   nav ul {

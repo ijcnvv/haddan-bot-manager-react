@@ -1,15 +1,15 @@
-import React, { Fragment, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import "./navbar.scss";
+import React, { Fragment, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import './navbar.scss';
 
 const titles = {
-  "/": "Главная",
-  "/price": "Стоимость",
-  "/updates": "Обновления",
-  "/users": "Пользователи",
-  "/auth": "Авторизация",
-  DEFAULT: "",
+  '/': 'Главная',
+  '/price': 'Стоимость',
+  '/updates': 'Обновления',
+  '/users': 'Пользователи',
+  '/auth': 'Авторизация',
+  DEFAULT: '',
 };
 
 const Navbar = () => {
@@ -17,9 +17,10 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const { isAuth } = useSelector(({ common }) => common);
   const commonLinks = [
-    { to: "/", label: "Главная", exact: true },
-    { to: "/price", label: "Стоимость", exact: false },
-    { to: "/updates", label: "Обновления", exact: false },
+    { to: '/', label: 'Главная', exact: true },
+    { to: '/price', label: 'Стоимость', exact: false },
+    { to: '/updates', label: 'Обновления', exact: false },
+    { to: '/maze', label: 'Лабиринт', exact: false },
   ];
 
   const title = titles[pathname] || titles.DEFAULT;
@@ -35,12 +36,7 @@ const Navbar = () => {
 
   const linksRendered = commonLinks.map(({ to, label, exact }, index) => (
     <li className="header__list-item" key={index}>
-      <NavLink
-        to={to}
-        className="header__link"
-        exact={exact}
-        onClick={navClickHandler}
-      >
+      <NavLink to={to} className="header__link" exact={exact} onClick={navClickHandler}>
         {label}
       </NavLink>
     </li>
@@ -54,11 +50,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="header__list-item right logout">
-        <NavLink
-          to="/logout"
-          className="header__link"
-          onClick={navClickHandler}
-        >
+        <NavLink to="/logout" className="header__link" onClick={navClickHandler}>
           <i className="material-icons">exit_to_app</i>
         </NavLink>
       </li>
@@ -71,10 +63,10 @@ const Navbar = () => {
     </li>
   );
 
-  const navClassName = ["header__nav"];
+  const navClassName = ['header__nav'];
 
   if (open) {
-    navClassName.push("open");
+    navClassName.push('open');
   }
 
   return (
@@ -85,7 +77,7 @@ const Navbar = () => {
             <i className="material-icons">menu</i>
             {title}
           </div>
-          <div className={navClassName.join(" ")} onClick={navClickHandler}>
+          <div className={navClassName.join(' ')} onClick={navClickHandler}>
             <div className="nav-wrapper">
               <ul className="header__list">
                 {linksRendered}

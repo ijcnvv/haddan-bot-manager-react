@@ -23,7 +23,7 @@ body {
   line-height: 1.4;
   color: $color-dark;
   font-weight: $weight-normal;
-  font-family: "Roboto", "Helvetica Neue", sans-serif;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
   background-color: $color-grey-light;
 }
 
@@ -63,12 +63,8 @@ h3 {
 
 .container {
   width: 100%;
-  max-width: 480px;
+  max-width: 720px;
   padding: 0 0.8rem;
-
-  &_md {
-    max-width: 720px;
-  }
 }
 
 button + button {

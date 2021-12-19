@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchAuthByToken } from "actions/commonActions";
-import Layout from "hoc/layout";
-import PrivateRoute from "hoc/privateRoute";
-import InfoPage from "pages/info/info";
-import PricePage from "pages/price/price";
-import UpdatesPage from "pages/updates/updates";
-import AuthPage from "pages/auth/auth";
-import UsersPage from "pages/users/users";
-import UserPage from "pages/user/user";
-import Logout from "components/logout/logout";
-import "./App.scss";
+import React, { useEffect } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAuthByToken } from 'actions/commonActions';
+import Layout from 'hoc/layout';
+import PrivateRoute from 'hoc/privateRoute';
+import InfoPage from 'pages/info/info';
+import MazePage from 'pages/maze/maze';
+import PricePage from 'pages/price/price';
+import UpdatesPage from 'pages/updates/updates';
+import AuthPage from 'pages/auth/auth';
+import UsersPage from 'pages/users/users';
+import UserPage from 'pages/user/user';
+import Logout from 'components/logout/logout';
+import './App.scss';
 
 const App = () => {
   const { isAuth, token } = useSelector(({ common }) => common);
@@ -29,6 +30,7 @@ const App = () => {
       <Switch>
         <PrivateRoute path="/users/:id" Component={UserPage} />
         <PrivateRoute path="/users" exact Component={UsersPage} />
+        <Route path="/maze" component={MazePage} />
         <Route path="/updates" component={UpdatesPage} />
         <Route path="/price" component={PricePage} />
         <Route path="/logout" component={Logout} />
