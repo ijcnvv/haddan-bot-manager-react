@@ -25,7 +25,7 @@ const MazePage = () => {
       <Select className="maze-map__field" value={lvl} onChange={setLevel} options={optionsList} />
       <div className="maze-map__content">
         <Loader loading={loading} className="maze-map__loader" />
-        <div id="lab_content" dangerouslySetInnerHTML={createMaze()}></div>
+        <div dangerouslySetInnerHTML={createMaze()}></div>
       </div>
     </div>
   );

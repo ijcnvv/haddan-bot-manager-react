@@ -28,6 +28,7 @@
     margin: 0;
     font-size: 11px;
     position: relative;
+    z-index: 1;
     color: #999;
     width: 30px;
     min-width: 30px;
@@ -78,13 +79,17 @@
     color: #333;
   }
 
-  .box_outer:hover .box_inner {
-    display: block;
+  .box_outer:hover {
+    z-index: 2;
+
+    .box_inner {
+      display: block;
+    }
   }
 
   .box_inner {
     position: absolute;
-    z-index: 500;
+    z-index: 3;
     top: 50%;
     left: calc(100% + 18px);
     display: none;
