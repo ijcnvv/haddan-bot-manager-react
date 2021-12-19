@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const PricePage = () => {
   return (
@@ -21,14 +21,10 @@ const PricePage = () => {
       <div className="section">
         <h3>Акции</h3>
         <p>
-          При подключении <strong>месяц в подарок!</strong>
-        </p>
-        <p>
           При оплате за полгода и более <strong>месяц в подарок!</strong>
         </p>
         <p>
-          <strong>Кэшбэк 10%</strong> - подключи друга к боту и получай 10% на
-          свой счет за его пополнение баланса.
+          <strong>Кэшбэк 10%</strong> - подключи друга к боту и получай 10% на свой счет за его пополнение баланса.
         </p>
       </div>
       <div className="section">
