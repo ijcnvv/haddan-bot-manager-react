@@ -1,17 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Button from "components/shared/button/button";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Button from 'components/shared/button/button';
 
 const AddDefaultCaptcha = ({ setPath, onChange }) => {
-  const values = [1000, 2000, 5000];
+  const values = [1000, 1667, 2000, 3000, 4000, 5000, 10000];
   const list = values.map((value) => {
     const title = `+ ${value}`;
     return (
-      <Button
-        className="btn"
-        key={value}
-        onClick={() => onChange("add", value)}
-      >
+      <Button className="btn" key={value} onClick={() => onChange('add', value)}>
         {title}
       </Button>
     );
@@ -23,7 +19,7 @@ const AddDefaultCaptcha = ({ setPath, onChange }) => {
         keyboard_backspace
       </i>
       <div className="cash">{list}</div>
-      <Button className="btn-flat" onClick={() => setPath("addCustom")}>
+      <Button className="btn-flat" onClick={() => setPath('addCustom')}>
         Другое
       </Button>
     </>
