@@ -7,6 +7,7 @@ import PrivateRoute from 'hoc/privateRoute';
 import InfoPage from 'pages/info/info';
 import MazePage from 'pages/maze/maze';
 import PricePage from 'pages/price/price';
+import PolicyPage from 'pages/policy/policy';
 import UpdatesPage from 'pages/updates/updates';
 import AuthPage from 'pages/auth/auth';
 import UsersPage from 'pages/users/users';
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/maze" component={MazePage} />
         <Route path="/updates" component={UpdatesPage} />
         <Route path="/price" component={PricePage} />
+        <Route path="/policy" component={PolicyPage} />
         <Route path="/logout" component={Logout} />
         <Route path="/auth" component={AuthPage} />
         <Route path="/" exact component={InfoPage} />
