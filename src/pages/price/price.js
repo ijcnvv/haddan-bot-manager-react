@@ -15,7 +15,7 @@ const PricePage = () => {
         </p>
         <p>
           Стоимость автоматического распознавания капч&nbsp;
-          <strong>300 руб/1000 запросов</strong>
+          <strong>4$ /1000 запросов</strong>
         </p>
       </div>
       <div className="section">
