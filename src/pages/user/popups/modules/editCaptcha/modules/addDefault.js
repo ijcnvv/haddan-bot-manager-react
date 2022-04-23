@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'components/shared/button/button';
 
 const AddDefaultCaptcha = ({ setPath, onChange }) => {
-  const values = [1000, 1667, 2000, 3000, 4000, 5000, 10000];
+  const values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
   const list = values.map((value) => {
     const title = `+ ${value}`;
     return (
