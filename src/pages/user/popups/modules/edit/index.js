@@ -17,7 +17,7 @@ const EditPropertyPopup = ({ editType, closePopup, ...rest }) => {
     cash: { Component: CashPopup, title: "Баланс, руб." },
     price: { Component: CommonPopup, title: "Тариф, руб/день" },
     discount: { Component: CommonPopup, title: "Скидка, %" },
-    vision: { Component: CaptchaPopup, title: editType === "add" ? "Капчи, руб" : "Капчи, шт" },
+    vision: { Component: CaptchaPopup, title: "Капчи, руб" },
   };
   const { Component, title } = types[editType];
 
