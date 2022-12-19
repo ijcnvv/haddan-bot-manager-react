@@ -42,29 +42,11 @@ const AddUser = ({ closePopup }) => {
             />
             <Input
               type="number"
-              className="col s6"
+              className="col s12"
               placeholder="ID персонажа"
               name="player_id"
               register={register({ required: 'ID is required' })}
               error={errors.player_id}
-            />
-            <Controller
-              as={Select}
-              name="network"
-              control={control}
-              label="Network"
-              className="col s6"
-              defaultValue="telegram"
-              options={networkList}
-            />
-            <Controller
-              as={Select}
-              name="cashback_id"
-              control={control}
-              label="From"
-              className="col s12"
-              defaultValue=""
-              options={usersList}
             />
           </div>
           <div className="row">
