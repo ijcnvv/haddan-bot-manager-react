@@ -1,12 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { fetchAddUser } from 'actions/usersActions';
 import PropTypes from 'prop-types';
 import Popup from 'components/shared/popup/popup';
 import Loader from 'components/shared/loader/loader';
-import Select from 'components/shared/select/select';
 import Input from 'components/shared/input/input';
 import Button from 'components/shared/button/button';
 import './addUserPopup.scss';
@@ -14,14 +13,9 @@ import './addUserPopup.scss';
 const AddUser = ({ closePopup }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { register, handleSubmit, errors, control } = useForm();
-  const { loading, users } = useSelector(({ users }) => users);
-  const networkList = {
-    telegram: 'Telegram',
-    skype: 'Skype',
-    whatsapp: 'WhatsApp',
-  };
-  const usersList = users.map(({ id, name }) => ({ value: id, text: name }));
+  const { register, handleSubmit, errors } = useForm();
+  const { loading } = useSelector(({ users }) => users);
+
   const submitClassName = `btn${loading ? ' disabled' : ''}`;
   const onSuccess = (id) => history.push(`/users/${id}`);
   const onFormSubmit = (data) => dispatch(fetchAddUser(data, onSuccess));
