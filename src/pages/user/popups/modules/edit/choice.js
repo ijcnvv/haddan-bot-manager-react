@@ -1,14 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Button from "components/shared/button/button";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Button from 'components/shared/button/button';
 
 const Choice = ({ setPath }) => {
   return (
     <div className="wrapper">
-      <Button className="btn" onClick={() => setPath("add")}>
+      <Button className="btn" onClick={() => setPath('add')}>
         Добавить
       </Button>
-      <Button className="btn-flat" onClick={() => setPath("edit")}>
+      <Button className="btn" onClick={() => setPath('remove')}>
+        Вычесть
+      </Button>
+      <Button className="btn-flat" onClick={() => setPath('edit')}>
         Редактировать
       </Button>
     </div>
@@ -16,7 +19,7 @@ const Choice = ({ setPath }) => {
 };
 
 Choice.propTypes = {
-  setPath: PropTypes.func.isRequired
+  setPath: PropTypes.func.isRequired,
 };
 
 export default Choice;

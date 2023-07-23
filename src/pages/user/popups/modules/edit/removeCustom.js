@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import PopupForm from "../form";
+import React from 'react';
+import PropTypes from 'prop-types';
+import PopupForm from '../form';
 
 const RemoveCustomCashValue = ({ setPath, onChange }) => {
   return (
     <PopupForm
       className="wrapper"
-      onBack={() => setPath("remove")}
-      onChange={(count) => onChange("remove", count)}
+      onBack={() => setPath(null)}
+      onChange={(count) => onChange('remove', count)}
       title="Вычесть"
     />
   );
