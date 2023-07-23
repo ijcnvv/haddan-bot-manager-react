@@ -80,23 +80,6 @@ const UserPage = () => {
             <i className="material-icons user__edit">edit</i>
             <span>Скидка {user.discount} %</span>
           </div>
-          <div
-            className="user__row space editable"
-            onClick={() => showPopup("editUser", "vision")}
-          >
-            <i className="material-icons user__edit">edit</i>
-            <span>Капчи {user.vision} шт.</span>
-          </div>
-
-          {user.cashback_id ? (
-            <div className="user__row">
-              <i className="material-icons">attach_money</i>
-              <span>10% кэшбэк для&nbsp;</span>
-              <NavLink to={`/users/${user.cashback_id}`}>
-                {user.cashback_name}
-              </NavLink>
-            </div>
-          ) : null}
 
           <div className="user__row">
             <i className="material-icons">update</i>
