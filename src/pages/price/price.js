@@ -4,7 +4,7 @@ const PricePage = () => {
   return (
     <>
       <div className="section">
-        По стоимости и вариантам оплаты вы можете уточнить у <a href="https://t.me/ijcnvv" target="_blank" rel="noopener noreferrer">разработчика</a>
+        Всю необходимую информацию по подключению и оплате вы можете найти в телеграм боте <a href="https://t.me/haddan_jc_bot" target="_blank" rel="noopener noreferrer">@haddan_jc_bot</a>. После подключения вам будет доступен бесплатный период несколько дней, чтобы вы могли полноценно опробовать весь функционал
        </div>
     </>
   );
