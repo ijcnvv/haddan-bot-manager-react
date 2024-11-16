@@ -8,7 +8,13 @@ import './maze.scss';
 
 const MazePage = () => {
   const initLevel = '1';
-  const optionsList = { 1: 'I Уровень', 2: 'II Уровень', 3: 'III Уровень' };
+  const optionsList = { 
+    1: 'I Уровень лабиринта древних руин', 
+    2: 'II Уровень лабиринта древних руин', 
+    3: 'III Уровень лабиринта древних руин',
+    4: 'I Уровень лабиринта замка теней',
+    5: 'II Уровень лабиринта замка теней',
+  };
 
   const dispatch = useDispatch();
   const history = useHistory();
