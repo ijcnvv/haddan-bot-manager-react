@@ -9,7 +9,8 @@ const initialState = {
   loading: false,
   error: false,
   profit: {},
-  users: []
+  users: [],
+  income: [],
 };
 
 const handlers = {
@@ -27,7 +28,8 @@ const handlers = {
     ...state,
     loading: false,
     users: payload.users,
-    profit: payload.profit
+    profit: payload.profit,
+    income: payload.income,
   }),
   [USERS_ADD_USER_SUCCEEDED]: state => ({
     ...state,
