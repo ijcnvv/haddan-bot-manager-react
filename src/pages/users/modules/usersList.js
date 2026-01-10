@@ -8,10 +8,16 @@ const UsersList = ({ users = [], filter = '', sortBy = 'name' }) => {
 
     if (!_filter) return users;
 
-    return users.filter(({ name, email, players }) => {
+    return users.filter(({ name, email, players, tgid }) => {
       const _name = name.trim().toLowerCase();
       const _email = email?.trim().toLowerCase() || '';
-      return _name.indexOf(_filter) !== -1 || _email.indexOf(_filter) !== -1 || players.indexOf(+_filter) !== -1;
+      
+      return [
+        _name.indexOf(_filter) !== -1, 
+        _email.indexOf(_filter) !== -1,
+        players.indexOf(+_filter) !== -1,
+        tgid.indexOf(+_filter) !== -1,
+      ].some(Boolean);
     });
   };
 
