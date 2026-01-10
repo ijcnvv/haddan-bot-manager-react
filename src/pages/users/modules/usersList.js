@@ -16,7 +16,7 @@ const UsersList = ({ users = [], filter = '', sortBy = 'name' }) => {
         _name.indexOf(_filter) !== -1, 
         _email.indexOf(_filter) !== -1,
         players.indexOf(+_filter) !== -1,
-        tgid.indexOf(+_filter) !== -1,
+        tgid === +_filter,
       ].some(Boolean);
     });
   };
