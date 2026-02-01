@@ -50,7 +50,6 @@ const UserPage = () => {
       {isEmpty ? null : (
         <div className="user__wrapper">
           <h2 className="user__title">
-            <img className="user__icon" src={`/images/${user.network}.png`} alt="icon" />
             <span>{user.name}</span>
           </h2>
           <div className="user__email">{user.email}</div>
