@@ -8,7 +8,6 @@ import InfoPage from 'pages/info/info';
 import MazePage from 'pages/maze/maze';
 import PricePage from 'pages/price/price';
 import PolicyPage from 'pages/policy/policy';
-import UpdatesPage from 'pages/updates/updates';
 import AuthPage from 'pages/auth/auth';
 import UsersPage from 'pages/users/users';
 import UserPage from 'pages/user/user';
