@@ -32,7 +32,6 @@ const App = () => {
         <PrivateRoute path="/users/:id" Component={UserPage} />
         <PrivateRoute path="/users" exact Component={UsersPage} />
         <Route path="/maze" component={MazePage} />
-        <Route path="/updates" component={UpdatesPage} />
         <Route path="/price" component={PricePage} />
         <Route path="/policy" component={PolicyPage} />
         <Route path="/logout" component={Logout} />
