@@ -21,7 +21,7 @@ const UsersList = ({ users = [], filter = '', sortBy = 'name' }) => {
     });
   };
 
-  const sortedList = [...usersFiltered()].sort((a, b) => a[sortBy] - b[sortBy]);
+  const sortedList = [...usersFiltered()].sort((a, b) => b[sortBy] - a[sortBy]);
   const list = sortedList.map((user) => <ListItem user={user} key={user.id} />);
 
   return <div className="users__list">{list}</div>;
