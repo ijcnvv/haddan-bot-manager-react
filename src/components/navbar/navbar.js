@@ -6,7 +6,6 @@ import './navbar.scss';
 const titles = {
   '/': 'Главная',
   '/price': 'Стоимость',
-  '/updates': 'Обновления',
   '/users': 'Пользователи',
   '/auth': 'Авторизация',
   DEFAULT: '',
@@ -19,7 +18,6 @@ const Navbar = () => {
   const commonLinks = [
     { to: '/', label: 'Главная', exact: true },
     { to: '/price', label: 'Стоимость', exact: false },
-    { to: '/updates', label: 'Обновления', exact: false },
     { to: '/maze', label: 'Лабиринт', exact: false },
   ];
 
