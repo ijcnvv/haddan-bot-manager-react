@@ -18,7 +18,6 @@ const Navbar = () => {
   const commonLinks = [
     { to: '/', label: 'Главная', exact: true },
     { to: '/price', label: 'Стоимость', exact: false },
-    { to: '/maze', label: 'Лабиринт', exact: false },
   ];
 
   const title = titles[pathname] || titles.DEFAULT;
